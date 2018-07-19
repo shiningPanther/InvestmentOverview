@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TransactionTest" representedClassName="TransactionTest" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Transformable" customClassName="[Date]" syncable="YES"/>
+        <attribute name="exchange" optional="YES" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
+        <attribute name="investmentISIN" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentSymbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priceEUR" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
+        <attribute name="unitsBought" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TransactionTest" positionX="3402" positionY="5004" width="128" height="165"/>
+    </elements>
+</model>
