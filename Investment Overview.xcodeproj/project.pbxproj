@@ -360,7 +360,7 @@
 				C42930F620F2B1C100423F96 /* Investment_Overview v2.xcdatamodel */,
 				C45C9BD620E015B100B628AE /* Investment_Overview.xcdatamodel */,
 			);
-			currentVersion = C45C9BD620E015B100B628AE /* Investment_Overview.xcdatamodel */;
+			currentVersion = C42A92F821012B1500119096 /* Investment_Overview v4.xcdatamodel */;
 			path = Investment_Overview.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
