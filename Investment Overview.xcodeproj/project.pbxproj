@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C40FECD020EF9D0800E9B2D8 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */; };
+		C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */; };
 		C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */; };
 		C42930F920F37D2F00423F96 /* DeleteInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F820F37D2F00423F96 /* DeleteInvestmentVC.swift */; };
 		C45C9BD220E015B100B628AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C9BD120E015B100B628AE /* AppDelegate.swift */; };
@@ -17,10 +18,14 @@
 		C45C9BE520E0248B00B628AE /* OverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C9BE420E0248B00B628AE /* OverviewVC.swift */; };
 		C46DE2FB20FAAEAD004619EB /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */; };
 		C46DE2FF20FAB062004619EB /* SplitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DE2FE20FAB062004619EB /* SplitController.swift */; };
+		C4A0F072210A2DCA0046D9F5 /* DetailsVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0F071210A2DCA0046D9F5 /* DetailsVCHelper.swift */; };
+		C4A0F074210A33090046D9F5 /* DetailsVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
+		C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C41B5E5D2104F98000864AE7 /* Investment Overview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Investment Overview.entitlements"; sourceTree = "<group>"; };
 		C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndCalculateFunctions.swift; sourceTree = "<group>"; };
 		C42930F620F2B1C100423F96 /* Investment_Overview v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v2.xcdatamodel"; sourceTree = "<group>"; };
 		C42930F720F2B25300423F96 /* Investment_Overview v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -32,10 +37,11 @@
 		C45C9BD820E015C400B628AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C45C9BDB20E015C400B628AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C45C9BDD20E015C400B628AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C45C9BDE20E015C400B628AE /* Investment_Overview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Investment_Overview.entitlements; sourceTree = "<group>"; };
 		C45C9BE420E0248B00B628AE /* OverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewVC.swift; sourceTree = "<group>"; };
 		C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		C46DE2FE20FAB062004619EB /* SplitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitController.swift; sourceTree = "<group>"; };
+		C4A0F071210A2DCA0046D9F5 /* DetailsVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCHelper.swift; sourceTree = "<group>"; };
+		C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,17 +77,28 @@
 				C45C9BD120E015B100B628AE /* AppDelegate.swift */,
 				C46DE2FE20FAB062004619EB /* SplitController.swift */,
 				C45C9BE420E0248B00B628AE /* OverviewVC.swift */,
-				C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */,
+				C4A0F075210A682A0046D9F5 /* DetailsVC */,
 				C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */,
 				C42930F820F37D2F00423F96 /* DeleteInvestmentVC.swift */,
 				C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */,
+				C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */,
 				C45C9BDA20E015C400B628AE /* Main.storyboard */,
 				C45C9BD820E015C400B628AE /* Assets.xcassets */,
 				C45C9BDD20E015C400B628AE /* Info.plist */,
-				C45C9BDE20E015C400B628AE /* Investment_Overview.entitlements */,
+				C41B5E5D2104F98000864AE7 /* Investment Overview.entitlements */,
 				C45C9BD520E015B100B628AE /* Investment_Overview.xcdatamodeld */,
 			);
 			path = "Investment Overview";
+			sourceTree = "<group>";
+		};
+		C4A0F075210A682A0046D9F5 /* DetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */,
+				C4A0F071210A2DCA0046D9F5 /* DetailsVCHelper.swift */,
+				C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */,
+			);
+			path = DetailsVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,6 +133,11 @@
 				TargetAttributes = {
 					C45C9BCD20E015B000B628AE = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -155,11 +177,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46DE2FF20FAB062004619EB /* SplitController.swift in Sources */,
+				C4A0F072210A2DCA0046D9F5 /* DetailsVCHelper.swift in Sources */,
 				C42930F920F37D2F00423F96 /* DeleteInvestmentVC.swift in Sources */,
 				C40FECD020EF9D0800E9B2D8 /* AddTransactionVC.swift in Sources */,
+				C4A0F074210A33090046D9F5 /* DetailsVCTableView.swift in Sources */,
 				C45C9BD720E015B100B628AE /* Investment_Overview.xcdatamodeld in Sources */,
 				C45C9BE520E0248B00B628AE /* OverviewVC.swift in Sources */,
 				C46DE2FB20FAAEAD004619EB /* DetailsVC.swift in Sources */,
+				C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */,
 				C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */,
 				C45C9BD220E015B100B628AE /* AppDelegate.swift in Sources */,
 			);
@@ -296,7 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Investment Overview/Investment_Overview.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Investment Overview/Investment Overview.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Investment Overview/Info.plist";
@@ -314,7 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Investment Overview/Investment_Overview.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Investment Overview/Investment Overview.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Investment Overview/Info.plist";

@@ -21,10 +21,16 @@ class OverviewVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // I do the view setup in the viewWillAppear function since in the viewDidLoad function the detailsVC is still nil...
+    override func viewWillAppear() {
+        super.viewWillAppear()
         updateView()
     }
     
     func updateView() {
+        print("overviewVC updateView has been called")
         // Get the context and initalize the categoryNames and investmentNames
         guard let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {return}
         do {
@@ -33,7 +39,7 @@ class OverviewVC: NSViewController {
         (categoryNames, investmentNames) = countInvestmentsAndCategories(transactions: transactions)
         
         // Check if edit and delete buttons should be enabled
-        switch (outlineView.selectedRow) {
+        switch (detailsVC?.tableView.selectedRow) {
         case -1:
             editButton.isEnabled = false
             deleteButton.isEnabled = false
@@ -42,39 +48,53 @@ class OverviewVC: NSViewController {
             deleteButton.isEnabled = true
         }
 
-        // Reload the outline view
+        // Reload the outline view and give the info to detailsVC to update its view accordingly
         outlineView.reloadData()
+        let (selectedCategory, selectedInvestment) = getSelectedCategoryAndInvestment()
+        detailsVC?.selectedCategory = selectedCategory
+        detailsVC?.selectedInvestment = selectedInvestment
     }
+    
+    // Get the selected category and investment in order to give them to other VCs
+    func getSelectedCategoryAndInvestment() -> (selectedCategory: String?, selectedInvestment: Transaction2?){
+        // If something is selected
+        if outlineView.selectedRow >= 0 {
+            guard let name = outlineView.item(atRow: outlineView.selectedRow) as? String else {return (nil, nil)}
+            switch (categoryNames.contains(name)) {
+            // true means that a category is selected -> return category name and nil for investment name
+            case true:
+                return (name, nil)
+            // false means that an investment is selected -> return nil for category name and selected investment
+            case false:
+                let investmentArray = transactions.filter({$0.investmentName == name})
+                if investmentArray.count == 1 {
+                    return (nil, investmentArray[0])
+                } else {
+                    return (nil, nil)
+                }
+            }
+        }
+        // If nothing is selected
+        else {
+            return (nil, nil)
+        }
+    }
+    
+    
+    
     
     // Every time the selection in the outline view changes, enable or disable the buttons
     // Also change the details view and give the selected investment / category to the DetailsVC
     func outlineViewSelectionDidChange(_ notification: Notification) {
-        if outlineView.selectedRow >= 0 {
-            editButton.isEnabled = true
-            deleteButton.isEnabled = true
-            guard let name = outlineView.item(atRow: outlineView.selectedRow) as? String else {return}
-            switch (categoryNames.contains(name)) {
-            // true means that a category is selected
-            case true:
-                detailsVC?.selectedCategory = name
-                detailsVC?.selectedInvestment = nil
-            // false means that an investment is selected
-            case false:
-                detailsVC?.selectedCategory = nil
-                let investmentArray = transactions.filter({$0.investmentName == name})
-                guard investmentArray.count == 1 else {
-                    detailsVC?.selectedInvestment = nil
-                    return
-                }
-                detailsVC?.selectedInvestment = investmentArray[0]
-            }
-        }
-        else {
-            editButton.isEnabled = false
-            deleteButton.isEnabled = false
-            detailsVC?.selectedCategory = nil
-            detailsVC?.selectedInvestment = nil
-        }
+        // When the outlineView selection changes we want the edit and delete buttons to be disabled
+        print("selectionDidChange was called")
+        editButton.isEnabled = false
+        deleteButton.isEnabled = false
+        
+        // Give info to detailsVC
+        let (selectedCategory, selectedInvestment) = getSelectedCategoryAndInvestment()
+        detailsVC?.selectedCategory = selectedCategory
+        detailsVC?.selectedInvestment = selectedInvestment
         detailsVC?.updateView()
     }
     
@@ -82,9 +102,15 @@ class OverviewVC: NSViewController {
     @IBAction func addTransactionButtonClicked(_ sender: Any) {
         guard let addTransactionWC = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "addTransactionWC")) as? NSWindowController else {return}
         guard let addTransactionVC = addTransactionWC.contentViewController as? AddTransactionVC else {return}
+        let (selectedCategory, selectedInvestment) = getSelectedCategoryAndInvestment()
         // This line assures that we can access the properties of this instance, ie the transactions etc
         addTransactionVC.overviewVC = self
         addTransactionVC.detailsVC = detailsVC
+        addTransactionVC.categoryNames = categoryNames
+        addTransactionVC.investmentNames = investmentNames
+        addTransactionVC.transactions = transactions
+        addTransactionVC.selectedCategory = selectedCategory
+        addTransactionVC.selectedInvestment = selectedInvestment
         addTransactionWC.showWindow(nil)
     }
     
@@ -93,6 +119,7 @@ class OverviewVC: NSViewController {
         guard let confirmDeleteVC = confirmDeleteWC.contentViewController as? DeleteInvestmentVC else {return}
         // This line assures that we can access the properties of this instance, ie the transactions etc
         confirmDeleteVC.overviewVC = self
+        confirmDeleteVC.detailsVC = detailsVC
         confirmDeleteWC.showWindow(nil)
     }
     

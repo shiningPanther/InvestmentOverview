@@ -14,6 +14,8 @@ class AddTransactionVC: NSViewController {
     var transactions: [Transaction2]?
     var categoryNames: [String]?
     var investmentNames: [String: [String]]?
+    var selectedInvestment: Transaction2?
+    var selectedCategory: String?
     
     // Reference to OverviewVC and DetailsVC - gets initiated when this window shows up
     var overviewVC: OverviewVC?
@@ -28,8 +30,10 @@ class AddTransactionVC: NSViewController {
     @IBOutlet weak var investmentNameAddButton: NSButton!
     @IBOutlet weak var symbolTextField: NSTextField!
     @IBOutlet weak var isinTextField: NSTextField!
+    @IBOutlet weak var apiPopUpButton: NSPopUpButton!
     @IBOutlet weak var unitsBoughtSoldTextField: NSTextField!
     @IBOutlet weak var priceTextField: NSTextField!
+    @IBOutlet weak var feesTextField: NSTextField!
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var exchangeNameTextField: NSTextField!
     
@@ -45,11 +49,6 @@ class AddTransactionVC: NSViewController {
     }
     
     func updateView() {
-        // assign variables from overviewVC -> Context does not need to be asked again
-        transactions = overviewVC?.transactions
-        categoryNames = overviewVC?.categoryNames
-        investmentNames = overviewVC?.investmentNames
-        
         // check that the assignment went correctly
         guard transactions != nil else {
             print("Transactions could not be assigned")
@@ -66,22 +65,54 @@ class AddTransactionVC: NSViewController {
         
         // Populate the investmentCategory pop up button
         investmentCategoryPopUpButton.addItems(withTitles: categoryNames!)
-        // Choose the displayed category as the item that was selected in the outline view
-        // Get the values from the DetailsVC
-        if let categoryTitle = detailsVC?.selectedCategory {
-            investmentCategoryPopUpButton.selectItem(withTitle: categoryTitle)
-            guard let investmentTitles = investmentNames?[categoryTitle] else {return}
-            investmentNamePopUpButton.addItems(withTitles: investmentTitles)
-        } else if let investment = detailsVC?.selectedInvestment {
-            guard let categoryTitle = investment.categoryName else {return}
-            investmentCategoryPopUpButton.selectItem(withTitle: categoryTitle)
-            guard let investmentTitles = investmentNames?[categoryTitle] else {return}
-            investmentNamePopUpButton.addItems(withTitles: investmentTitles)
-            investmentNamePopUpButton.selectItem(withTitle: investment.investmentName!)
-        }
+        investmentCategoryPopUpButton.selectItem(at: -1)
         
+        // Show an item in the investment category pop up button if either an investment or category are selected
+        if selectedCategory != nil {
+            investmentCategoryPopUpButton.selectItem(withTitle: selectedCategory!)
+        }
+        if selectedInvestment != nil {
+            let categoryName = selectedInvestment?.categoryName ?? "Empty category"
+            investmentCategoryPopUpButton.selectItem(withTitle: categoryName)
+            // Now also populate the investment name pop up button
+            if let investmentTitles = investmentNames?[categoryName] {
+                investmentNamePopUpButton.addItems(withTitles: investmentTitles)
+            }
+            if let name = selectedInvestment?.investmentName {
+                investmentNamePopUpButton.selectItem(withTitle: name)
+                // Populate all other fields
+                showTextFieldsForInvestment(investmentName: name)
+            }
+        }
         // Set the date to the current date
         datePicker.dateValue = Date()
+    }
+    
+    func showTextFieldsForInvestment(investmentName: String) {
+        guard let transactionArray = transactions?.filter({$0.investmentName == investmentName}) else {return}
+        guard transactionArray.count == 1 else {return}
+        let transaction = transactionArray[0]
+        
+        // Populate all relevant fields
+        if let name = transaction.investmentName {
+            investmentNamePopUpButton.selectItem(withTitle: name)
+        }
+        if let symbol = transaction.investmentSymbol {
+            symbolTextField.stringValue = symbol
+        }
+        if let isin = transaction.investmentISIN {
+            isinTextField.stringValue = isin
+        }
+        if let api = transaction.apiWebsite {
+            apiPopUpButton.addItem(withTitle: api)
+            apiPopUpButton.selectItem(withTitle: api)
+        }
+    }
+    
+    func removeAllInvestmentFields() {
+        symbolTextField.stringValue = ""
+        isinTextField.stringValue = ""
+        apiPopUpButton.selectItem(at: -1)
     }
     
     
@@ -92,19 +123,25 @@ class AddTransactionVC: NSViewController {
             investmentCategoryTextField.stringValue = ""
             investmentCategoryPopUpButton.addItem(withTitle: title)
             investmentCategoryPopUpButton.selectItem(withTitle: title)
+            // New category -- remove all
+            investmentNamePopUpButton.removeAllItems()
+            removeAllInvestmentFields()
         }
     }
     
     @IBAction func investmentCategoryPopUpButtonChanged(_ sender: Any) {
-        // Populate the investmentCategory pop up button
+        // Populate the investmentName pop up button
         investmentNamePopUpButton.removeAllItems()
+        removeAllInvestmentFields()
         guard let categoryTitle = investmentCategoryPopUpButton.titleOfSelectedItem else {return}
         guard let investmentTitles = investmentNames?[categoryTitle] else {return}
         investmentNamePopUpButton.addItems(withTitles: investmentTitles)
+        investmentNamePopUpButton.selectItem(at: -1)
     }
     
     @IBAction func investmentNameAddButtonClicked(_ sender: Any) {
         // Add the value of the text field to the investment name pop up button and make it active
+        removeAllInvestmentFields()
         let title = investmentNameTextField.stringValue
         if title != "" {
             investmentNameTextField.stringValue = ""
@@ -113,12 +150,19 @@ class AddTransactionVC: NSViewController {
         }
     }
     
+    @IBAction func investmentNamePopUpButtonChanged(_ sender: Any) {
+        removeAllInvestmentFields()
+        guard let name = investmentNamePopUpButton.titleOfSelectedItem else {return}
+        showTextFieldsForInvestment(investmentName: name)
+    }
+    
     @IBAction func saveButtonClicked(_ sender: Any) {
         
         // A transaction is identified by its investmentName - This name has to be unique and cannot exist as a category name
         // Make also sure that a category name and an investment name are selected
         guard let investmentName = investmentNamePopUpButton.titleOfSelectedItem else {return}
         guard investmentCategoryPopUpButton.titleOfSelectedItem != nil else {return}
+        guard transactionTypePopUpButton.titleOfSelectedItem != nil else {return}
         // Get only the tansaction with the name that is trying to be saved - the filter function returns an array with the selected criteria. The array is empty if it is a new transaction
         guard let transactionArray = transactions?.filter({$0.investmentName == investmentName}) else {return}
         
@@ -145,10 +189,20 @@ class AddTransactionVC: NSViewController {
             newTransaction.priceEUR = [priceTextField.doubleValue]
             newTransaction.date = [datePicker.dateValue]
             newTransaction.exchange = [exchangeNameTextField.stringValue]
+            newTransaction.type = [transactionTypePopUpButton.titleOfSelectedItem] as? [String]
+            newTransaction.fees = [feesTextField.doubleValue]
+            
+            // Now calculate the profits
+            calculateProfits(transaction: newTransaction)
             
             // Save, update overviewVC and close window
             (NSApplication.shared.delegate as? AppDelegate)?.saveAction(nil)
             overviewVC?.updateView()
+            // A new transaction was created - show it directly in the detailsVC
+            detailsVC?.selectedCategory = nil
+            detailsVC?.selectedInvestment = newTransaction
+            detailsVC?.updateView()
+            // Also select the transaction in the outline view of the overviewVC
             view.window?.close()
         }
         
@@ -169,6 +223,8 @@ class AddTransactionVC: NSViewController {
                 transaction.unitsBought?.insert(unitsBoughtSoldTextField.doubleValue, at: firstLargerIndex)
                 transaction.priceEUR?.insert(priceTextField.doubleValue, at: firstLargerIndex)
                 transaction.exchange?.insert(exchangeNameTextField.stringValue, at: firstLargerIndex)
+                transaction.type?.insert(transactionTypePopUpButton.stringValue, at: firstLargerIndex)
+                transaction.fees?.insert(feesTextField.doubleValue, at: firstLargerIndex)
             }
             // Otherwise this is the latest transaction - just append everything
             else {
@@ -176,7 +232,12 @@ class AddTransactionVC: NSViewController {
                 transaction.priceEUR?.append(priceTextField.doubleValue)
                 transaction.date?.append(datePicker.dateValue)
                 transaction.exchange?.append(exchangeNameTextField.stringValue)
+                transaction.type?.append(transactionTypePopUpButton.titleOfSelectedItem!)
+                transaction.fees?.append(feesTextField.doubleValue)
             }
+            
+            // Now calculate the profits
+            calculateProfits(transaction: transaction)
             
             // Save, update overviewVC and close window
             (NSApplication.shared.delegate as? AppDelegate)?.saveAction(nil)

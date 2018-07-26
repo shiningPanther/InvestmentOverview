@@ -33,14 +33,20 @@ public func countInvestmentsAndCategories(transactions: [Transaction2]) -> (cate
 
 
 // Function to calculate the profits
-public func calculateProfits(transactions: [Transaction2], investmentName: String) -> Double {
-    var unitsTotal = 0.0
-    let testTransaction = transactions.filter({$0.investmentName == investmentName})
-    let unitsBought = testTransaction[0].unitsBought ?? []
-    for bought in unitsBought {
-        unitsTotal += bought
+public func calculateProfits(transaction: Transaction2) {
+    transaction.currentBalance = 0.0
+    guard transaction.date?.count != nil else {return}
+    // go through each transaction
+    for index in 0..<transaction.date!.count {
+        if transaction.type?[index] == "Buy" {
+            guard transaction.unitsBought?[index] != nil else {return}
+            transaction.currentBalance += transaction.unitsBought![index]
+        }
+        else if transaction.type?[index] == "Sell" {
+            guard transaction.unitsBought?[index] != nil else {return}
+            transaction.currentBalance -= transaction.unitsBought![index]
+        }
     }
-    return unitsTotal
 }
 
 
