@@ -11,6 +11,41 @@ import Foundation
 
 extension DetailsVC {
     
+    func updateView() {
+        // test to see if we can get the ETH price
+        print("This is done in the updateView function of DetailsVC")
+        if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR") {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard error == nil else{
+                    print("An error occured")
+                    print(error!)
+                    return
+                }
+                guard data != nil else {return}
+                // Make a json object out of the returned data
+                let json = JSON(data!)
+                print(json["EUR"].double ?? "Not defined")
+                }.resume()
+        }
+        
+        // nothing in the overviewVC outline view is selected
+        if selectedInvestment == nil && selectedCategory == nil {
+            hideInvestment()
+            hideCategory()
+        }
+        
+        // now check if a category or investment is selected
+        if selectedCategory != nil {
+            unhideCategory()
+            hideInvestment()
+            updateCategory(category: selectedCategory!)
+        } else if selectedInvestment != nil {
+            unhideCategory()
+            unhideInvestment()
+            updateInvestment(investment: selectedInvestment!)
+        }
+    }
+    
     func updateCategory(category: String) {
         categoryLabel.stringValue = "Category: \(selectedCategory!)"
     }

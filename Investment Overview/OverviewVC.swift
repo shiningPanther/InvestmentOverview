@@ -21,6 +21,13 @@ class OverviewVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Transaction2")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        guard let context = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {return}
+        do {
+            let result = try context.execute(request)
+        } catch {}
     }
     
     // I do the view setup in the viewWillAppear function since in the viewDidLoad function the detailsVC is still nil...
@@ -55,34 +62,6 @@ class OverviewVC: NSViewController {
         detailsVC?.selectedInvestment = selectedInvestment
     }
     
-    // Get the selected category and investment in order to give them to other VCs
-    func getSelectedCategoryAndInvestment() -> (selectedCategory: String?, selectedInvestment: Transaction2?){
-        // If something is selected
-        if outlineView.selectedRow >= 0 {
-            guard let name = outlineView.item(atRow: outlineView.selectedRow) as? String else {return (nil, nil)}
-            switch (categoryNames.contains(name)) {
-            // true means that a category is selected -> return category name and nil for investment name
-            case true:
-                return (name, nil)
-            // false means that an investment is selected -> return nil for category name and selected investment
-            case false:
-                let investmentArray = transactions.filter({$0.investmentName == name})
-                if investmentArray.count == 1 {
-                    return (nil, investmentArray[0])
-                } else {
-                    return (nil, nil)
-                }
-            }
-        }
-        // If nothing is selected
-        else {
-            return (nil, nil)
-        }
-    }
-    
-    
-    
-    
     // Every time the selection in the outline view changes, enable or disable the buttons
     // Also change the details view and give the selected investment / category to the DetailsVC
     func outlineViewSelectionDidChange(_ notification: Notification) {
@@ -100,8 +79,8 @@ class OverviewVC: NSViewController {
     
     
     @IBAction func addTransactionButtonClicked(_ sender: Any) {
-        guard let addTransactionWC = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "addTransactionWC")) as? NSWindowController else {return}
-        guard let addTransactionVC = addTransactionWC.contentViewController as? AddTransactionVC else {return}
+        guard let addTransactionWC = instantiateWCFromStoryboard(identifier: "addTransactionWC") else {return}
+        guard let addTransactionVC = getVCFromWC(wc: addTransactionWC) as? AddTransactionVC else {return}
         let (selectedCategory, selectedInvestment) = getSelectedCategoryAndInvestment()
         // This line assures that we can access the properties of this instance, ie the transactions etc
         addTransactionVC.overviewVC = self
@@ -113,6 +92,18 @@ class OverviewVC: NSViewController {
         addTransactionVC.selectedInvestment = selectedInvestment
         addTransactionWC.showWindow(nil)
     }
+    
+    @IBAction func editTransactionButtonClicked(_ sender: Any) {
+        guard let editTransactionWC = instantiateWCFromStoryboard(identifier: "editTransactionWC") else {return}
+        guard let editTransactionVC = getVCFromWC(wc: editTransactionWC) as? EditTransactionVC else {return}
+        editTransactionVC.selectedInvestment = detailsVC?.selectedInvestment
+        editTransactionVC.selectedTransaction = detailsVC?.tableView.selectedRow
+        editTransactionVC.updateView()
+        editTransactionWC.showWindow(nil)
+    }
+    
+    
+    
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
         guard let confirmDeleteWC = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "confirmDeleteWC")) as? NSWindowController else {return}
