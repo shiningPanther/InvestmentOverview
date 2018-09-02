@@ -14,7 +14,7 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         // Return the count of any array of selectedInvestment - if it is nil return 0
-        return selectedInvestment?.date?.count ?? 0
+        return selectedTransactions?.count ?? 0
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -22,8 +22,7 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "dateCell"), owner: self) as? NSTableCellView
         
         if tableColumn?.identifier.rawValue == "dateColumn" {
-            // get date from date picker or if that is ill-defined get current date
-            let date = selectedInvestment?.date?[row] ?? Date()
+            let date = selectedTransactions?[row].date ?? Date()
             let formatter = DateFormatter()
             // This is to get a nice format for the date
             guard let style = DateFormatter.Style(rawValue: 2) else {
@@ -36,34 +35,34 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
         }
         
         if tableColumn?.identifier.rawValue == "exchangeColumn" {
-            let exchange = selectedInvestment?.exchange?[row] ?? ""
+            let exchange = selectedTransactions?[row].exchange ?? ""
             cell?.textField?.stringValue = exchange
         }
         
         if tableColumn?.identifier.rawValue == "typeColumn" {
-            let type = selectedInvestment?.type?[row] ?? "Type is nil"
+            let type = selectedTransactions?[row].type ?? "Type is nil"
             cell?.textField?.stringValue = type
         }
         
         if tableColumn?.identifier.rawValue == "amountColumn" {
-            let units = selectedInvestment?.unitsBought?[row] ?? 0.0
+            let units = selectedTransactions?[row].unitsBought ?? 0.0
             cell?.textField?.stringValue = "\(units)"
         }
         
         if tableColumn?.identifier.rawValue == "priceColumn" {
-            let price = selectedInvestment?.priceEUR?[row] ?? 0.0
+            let price = selectedTransactions?[row].price ?? 0.0
             cell?.textField?.stringValue = "\(price) €"
         }
         
         if tableColumn?.identifier.rawValue == "investedMoneyColumn" {
-            let price = selectedInvestment?.priceEUR?[row] ?? 0.0
-            let units = selectedInvestment?.unitsBought?[row] ?? 0.0
+            let price = selectedTransactions?[row].price ?? 0.0
+            let units = selectedTransactions?[row].unitsBought ?? 0.0
             // Display the rounded value to two digits as a string
             cell?.textField?.stringValue = String(format: "%.2f €", price*units)
         }
         
         if tableColumn?.identifier.rawValue == "feesColumn" {
-            let fees = selectedInvestment?.fees?[row] ?? 0.0
+            let fees = selectedTransactions?[row].fees ?? 0.0
             cell?.textField?.stringValue = String(format: "%.2f €", fees)
         }
         

@@ -10,9 +10,12 @@ import Cocoa
 
 class DetailsVC: NSViewController {
     
+    // overviewVC is initialized by the SplitController
     var overviewVC: OverviewVC?
-    var selectedInvestment: Transaction2?
-    var selectedCategory: String?
+    
+    var selectedTransactions: [Transaction]?
+    var selectedInvestment: Investment?
+    var selectedCategory: Category?
     
     @IBOutlet weak var tableView: NSTableView!
     
@@ -49,6 +52,11 @@ class DetailsVC: NSViewController {
         // Hide everything at the beginning
         hideInvestment()
         hideCategory()
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        updateView()
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {

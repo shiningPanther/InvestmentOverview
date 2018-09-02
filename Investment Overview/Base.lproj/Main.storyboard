@@ -1109,10 +1109,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="-845" y="1528"/>
         </scene>
-        <!--Delete InvestmentVC-->
+        <!--Delete TransactionVC-->
         <scene sceneID="Zfo-YZ-nk2">
             <objects>
-                <viewController id="XgX-X9-raK" customClass="DeleteInvestmentVC" customModule="Investment_Overview" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XgX-X9-raK" customClass="DeleteTransactionVC" customModule="Investment_Overview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="nPZ-sn-It6">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="259"/>
                         <autoresizingMask key="autoresizingMask"/>

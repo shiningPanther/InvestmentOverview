@@ -10,8 +10,10 @@ import Cocoa
 
 class EditTransactionVC: NSViewController {
     
-    var selectedInvestment: Transaction2?
-    var selectedTransaction: Int?
+    // The selected investment and transaction from the outlineView or tableView, respectively.
+    // They get assigned when the view controller get initiated.
+    var selectedInvestment: Investment?
+    var selectedTransaction: Transaction?
     
     @IBOutlet weak var investmentNameTextField: NSTextField!
     @IBOutlet weak var categoryNameTextField: NSTextField!
@@ -34,6 +36,11 @@ class EditTransactionVC: NSViewController {
     
     override func viewWillAppear() {
         updateView()
+        guard let context = CoreDataHelper.getContext() else {return}
+        do {
+            let transactions = try context.fetch(Transaction.fetchRequest()) as [NSManagedObject]
+            transactions[0].setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+        } catch {}
     }
     
 }

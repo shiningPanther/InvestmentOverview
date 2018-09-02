@@ -9,35 +9,40 @@
 /* Begin PBXBuildFile section */
 		C40FECD020EF9D0800E9B2D8 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */; };
 		C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */; };
+		C41E893A212CAAA0005F8297 /* AddTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E8939212CAA9F005F8297 /* AddTransactionVCHelper.swift */; };
 		C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */; };
-		C42930F920F37D2F00423F96 /* DeleteInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F820F37D2F00423F96 /* DeleteInvestmentVC.swift */; };
+		C42930F920F37D2F00423F96 /* DeleteTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F820F37D2F00423F96 /* DeleteTransactionVC.swift */; };
 		C44879CD210CA0A7007953F5 /* EditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879CC210CA0A7007953F5 /* EditTransactionVC.swift */; };
 		C44879CF210CA3FA007953F5 /* OverviewVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879CE210CA3FA007953F5 /* OverviewVCHelper.swift */; };
-		C44879D1210CF364007953F5 /* EditTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879D0210CF364007953F5 /* EditTransactionVCHelper.swift */; };
 		C44879D3210CF6C6007953F5 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879D2210CF6C6007953F5 /* ViewHelper.swift */; };
 		C45C9BD220E015B100B628AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C9BD120E015B100B628AE /* AppDelegate.swift */; };
 		C45C9BD720E015B100B628AE /* Investment_Overview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C45C9BD520E015B100B628AE /* Investment_Overview.xcdatamodeld */; };
 		C45C9BD920E015C400B628AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45C9BD820E015C400B628AE /* Assets.xcassets */; };
 		C45C9BDC20E015C400B628AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45C9BDA20E015C400B628AE /* Main.storyboard */; };
 		C45C9BE520E0248B00B628AE /* OverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C9BE420E0248B00B628AE /* OverviewVC.swift */; };
+		C46A02DF211A456500294033 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46A02DE211A456500294033 /* CoreDataHelper.swift */; };
 		C46DE2FB20FAAEAD004619EB /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */; };
 		C46DE2FF20FAB062004619EB /* SplitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46DE2FE20FAB062004619EB /* SplitController.swift */; };
 		C4A0F072210A2DCA0046D9F5 /* DetailsVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0F071210A2DCA0046D9F5 /* DetailsVCHelper.swift */; };
 		C4A0F074210A33090046D9F5 /* DetailsVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */; };
+		C4ABD52C2135D855002E0034 /* DeleteTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ABD52B2135D855002E0034 /* DeleteTransactionVCHelper.swift */; };
+		C4CF98B4213C4D7100D5FE4C /* EditTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF98B3213C4D7100D5FE4C /* EditTransactionVCHelper.swift */; };
+		C4D18E70211CDBF200AD74DC /* OverviewVCOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D18E6F211CDBF200AD74DC /* OverviewVCOutlineView.swift */; };
+		C4E23BCA212E02150049CAAE /* AddTransactionVCSaverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E23BC9212E02150049CAAE /* AddTransactionVCSaverHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C41B5E5D2104F98000864AE7 /* Investment Overview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Investment Overview.entitlements"; sourceTree = "<group>"; };
+		C41E8939212CAA9F005F8297 /* AddTransactionVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVCHelper.swift; sourceTree = "<group>"; };
 		C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndCalculateFunctions.swift; sourceTree = "<group>"; };
 		C42930F620F2B1C100423F96 /* Investment_Overview v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v2.xcdatamodel"; sourceTree = "<group>"; };
 		C42930F720F2B25300423F96 /* Investment_Overview v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v3.xcdatamodel"; sourceTree = "<group>"; };
-		C42930F820F37D2F00423F96 /* DeleteInvestmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteInvestmentVC.swift; sourceTree = "<group>"; };
+		C42930F820F37D2F00423F96 /* DeleteTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeleteTransactionVC.swift; path = "Investment Overview/DeleteTransactionVC.swift"; sourceTree = SOURCE_ROOT; };
 		C42A92F821012B1500119096 /* Investment_Overview v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v4.xcdatamodel"; sourceTree = "<group>"; };
 		C44879CC210CA0A7007953F5 /* EditTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionVC.swift; sourceTree = "<group>"; };
 		C44879CE210CA3FA007953F5 /* OverviewVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewVCHelper.swift; sourceTree = "<group>"; };
-		C44879D0210CF364007953F5 /* EditTransactionVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditTransactionVCHelper.swift; path = "Investment Overview/EditTransactionVCHelper.swift"; sourceTree = SOURCE_ROOT; };
 		C44879D2210CF6C6007953F5 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		C45C9BCE20E015B100B628AE /* Investment Overview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Investment Overview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45C9BD120E015B100B628AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,10 +51,15 @@
 		C45C9BDB20E015C400B628AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C45C9BDD20E015C400B628AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45C9BE420E0248B00B628AE /* OverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewVC.swift; sourceTree = "<group>"; };
+		C46A02DE211A456500294033 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		C46DE2FA20FAAEAD004619EB /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		C46DE2FE20FAB062004619EB /* SplitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitController.swift; sourceTree = "<group>"; };
 		C4A0F071210A2DCA0046D9F5 /* DetailsVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCHelper.swift; sourceTree = "<group>"; };
 		C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCTableView.swift; sourceTree = "<group>"; };
+		C4ABD52B2135D855002E0034 /* DeleteTransactionVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTransactionVCHelper.swift; sourceTree = "<group>"; };
+		C4CF98B3213C4D7100D5FE4C /* EditTransactionVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionVCHelper.swift; sourceTree = "<group>"; };
+		C4D18E6F211CDBF200AD74DC /* OverviewVCOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewVCOutlineView.swift; sourceTree = "<group>"; };
+		C4E23BC9212E02150049CAAE /* AddTransactionVCSaverHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVCSaverHelper.swift; sourceTree = "<group>"; };
 		C4E2B61A2115F3C4007BF3FC /* Investment_Overview v5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v5.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +74,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40CD28221382AB500ECD8F9 /* DeleteTransactionVC */ = {
+			isa = PBXGroup;
+			children = (
+				C42930F820F37D2F00423F96 /* DeleteTransactionVC.swift */,
+				C4ABD52B2135D855002E0034 /* DeleteTransactionVCHelper.swift */,
+			);
+			path = DeleteTransactionVC;
+			sourceTree = "<group>";
+		};
+		C41E893B212CB15B005F8297 /* AddTransactionVC */ = {
+			isa = PBXGroup;
+			children = (
+				C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */,
+				C41E8939212CAA9F005F8297 /* AddTransactionVCHelper.swift */,
+				C4E23BC9212E02150049CAAE /* AddTransactionVCSaverHelper.swift */,
+			);
+			path = AddTransactionVC;
+			sourceTree = "<group>";
+		};
 		C45C9BC520E015B000B628AE = {
 			isa = PBXGroup;
 			children = (
@@ -85,15 +114,14 @@
 			children = (
 				C45C9BD120E015B100B628AE /* AppDelegate.swift */,
 				C46DE2FE20FAB062004619EB /* SplitController.swift */,
-				C45C9BE420E0248B00B628AE /* OverviewVC.swift */,
-				C44879CE210CA3FA007953F5 /* OverviewVCHelper.swift */,
+				C4D18E71211CDC2E00AD74DC /* OverviewVC */,
 				C4A0F075210A682A0046D9F5 /* DetailsVC */,
-				C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */,
-				C44879CC210CA0A7007953F5 /* EditTransactionVC.swift */,
-				C44879D0210CF364007953F5 /* EditTransactionVCHelper.swift */,
-				C42930F820F37D2F00423F96 /* DeleteInvestmentVC.swift */,
-				C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */,
+				C41E893B212CB15B005F8297 /* AddTransactionVC */,
+				C40CD28221382AB500ECD8F9 /* DeleteTransactionVC */,
+				C460F02B213C13CA0008F3A2 /* EditTransactionVC */,
 				C44879D2210CF6C6007953F5 /* ViewHelper.swift */,
+				C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */,
+				C46A02DE211A456500294033 /* CoreDataHelper.swift */,
 				C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */,
 				C45C9BDA20E015C400B628AE /* Main.storyboard */,
 				C45C9BD820E015C400B628AE /* Assets.xcassets */,
@@ -104,6 +132,15 @@
 			path = "Investment Overview";
 			sourceTree = "<group>";
 		};
+		C460F02B213C13CA0008F3A2 /* EditTransactionVC */ = {
+			isa = PBXGroup;
+			children = (
+				C44879CC210CA0A7007953F5 /* EditTransactionVC.swift */,
+				C4CF98B3213C4D7100D5FE4C /* EditTransactionVCHelper.swift */,
+			);
+			path = EditTransactionVC;
+			sourceTree = "<group>";
+		};
 		C4A0F075210A682A0046D9F5 /* DetailsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +149,16 @@
 				C4A0F073210A33090046D9F5 /* DetailsVCTableView.swift */,
 			);
 			path = DetailsVC;
+			sourceTree = "<group>";
+		};
+		C4D18E71211CDC2E00AD74DC /* OverviewVC */ = {
+			isa = PBXGroup;
+			children = (
+				C45C9BE420E0248B00B628AE /* OverviewVC.swift */,
+				C44879CE210CA3FA007953F5 /* OverviewVCHelper.swift */,
+				C4D18E6F211CDBF200AD74DC /* OverviewVCOutlineView.swift */,
+			);
+			path = OverviewVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,12 +236,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ABD52C2135D855002E0034 /* DeleteTransactionVCHelper.swift in Sources */,
 				C46DE2FF20FAB062004619EB /* SplitController.swift in Sources */,
-				C44879D1210CF364007953F5 /* EditTransactionVCHelper.swift in Sources */,
+				C46A02DF211A456500294033 /* CoreDataHelper.swift in Sources */,
 				C4A0F072210A2DCA0046D9F5 /* DetailsVCHelper.swift in Sources */,
-				C42930F920F37D2F00423F96 /* DeleteInvestmentVC.swift in Sources */,
+				C42930F920F37D2F00423F96 /* DeleteTransactionVC.swift in Sources */,
+				C4D18E70211CDBF200AD74DC /* OverviewVCOutlineView.swift in Sources */,
 				C44879CF210CA3FA007953F5 /* OverviewVCHelper.swift in Sources */,
+				C41E893A212CAAA0005F8297 /* AddTransactionVCHelper.swift in Sources */,
 				C40FECD020EF9D0800E9B2D8 /* AddTransactionVC.swift in Sources */,
+				C4CF98B4213C4D7100D5FE4C /* EditTransactionVCHelper.swift in Sources */,
 				C4A0F074210A33090046D9F5 /* DetailsVCTableView.swift in Sources */,
 				C45C9BD720E015B100B628AE /* Investment_Overview.xcdatamodeld in Sources */,
 				C45C9BE520E0248B00B628AE /* OverviewVC.swift in Sources */,
@@ -202,6 +253,7 @@
 				C44879D3210CF6C6007953F5 /* ViewHelper.swift in Sources */,
 				C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */,
 				C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */,
+				C4E23BCA212E02150049CAAE /* AddTransactionVCSaverHelper.swift in Sources */,
 				C45C9BD220E015B100B628AE /* AppDelegate.swift in Sources */,
 				C44879CD210CA0A7007953F5 /* EditTransactionVC.swift in Sources */,
 			);
@@ -403,7 +455,7 @@
 				C42930F620F2B1C100423F96 /* Investment_Overview v2.xcdatamodel */,
 				C45C9BD620E015B100B628AE /* Investment_Overview.xcdatamodel */,
 			);
-			currentVersion = C4E2B61A2115F3C4007BF3FC /* Investment_Overview v5.xcdatamodel */;
+			currentVersion = C45C9BD620E015B100B628AE /* Investment_Overview.xcdatamodel */;
 			path = Investment_Overview.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

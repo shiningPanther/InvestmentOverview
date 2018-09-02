@@ -46,14 +46,14 @@ extension DetailsVC {
         }
     }
     
-    func updateCategory(category: String) {
-        categoryLabel.stringValue = "Category: \(selectedCategory!)"
+    func updateCategory(category: Category) {
+        categoryLabel.stringValue = "Category: \(category.name!)"
     }
     
-    func updateInvestment(investment: Transaction2) {
-        categoryLabel.stringValue = "Category: \(selectedInvestment!.categoryName ?? "No category selected")"
-        investmentLabel.stringValue = "\(selectedInvestment!.investmentName ?? "No investment selected")"
-        balanceLabel.stringValue = String(selectedInvestment!.currentBalance)
+    func updateInvestment(investment: Investment) {
+        categoryLabel.stringValue = "Category: \(investment.category?.name ?? "No category selected - This should never happen...")"
+        investmentLabel.stringValue = "\(investment.name ?? "No investment selected - This should never happen...")"
+        balanceLabel.stringValue = String(investment.balance)
         tableView.reloadData()
     }
     

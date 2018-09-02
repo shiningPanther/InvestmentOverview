@@ -16,6 +16,9 @@ class SplitController: NSSplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // load here the data from core data
+        CoreDataHelper.loadTransactions()
+        
         // assign here the refereneces between the split view controllers
         guard let overviewVC = overviewItem.viewController as? OverviewVC else {return}
         guard let detailsVC = detailItem.viewController as? DetailsVC else {return}
