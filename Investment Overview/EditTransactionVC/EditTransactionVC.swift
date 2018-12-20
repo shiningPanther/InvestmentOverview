@@ -36,11 +36,22 @@ class EditTransactionVC: NSViewController {
     
     override func viewWillAppear() {
         updateView()
-        guard let context = CoreDataHelper.getContext() else {return}
-        do {
-            let transactions = try context.fetch(Transaction.fetchRequest()) as [NSManagedObject]
-            transactions[0].setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
-        } catch {}
     }
     
+    // check which property is changed and then change the context accordingly
+    @IBAction func confirmButtonClicked(_ sender: Any) {
+        if unitsBoughtHasChanged() {
+            let success = updateUnitsBought()
+            CoreDataHelper.save()
+        }
+        
+        calculateProfits(investment: selectedInvestment!)
+        view.window?.close()
+        
+    }
+    
+    
+    
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+    }
 }

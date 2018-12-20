@@ -17,6 +17,7 @@
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="investment" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="exchange" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fees" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -38,7 +39,7 @@
     <elements>
         <element name="Category" positionX="3420" positionY="5085" width="128" height="73"/>
         <element name="Investment" positionX="3600" positionY="5085" width="128" height="195"/>
-        <element name="Transaction" positionX="3771" positionY="5085" width="128" height="148"/>
+        <element name="Transaction" positionX="3771" positionY="5085" width="128" height="165"/>
         <element name="Transaction2" positionX="3420" positionY="5292" width="128" height="163"/>
     </elements>
 </model>

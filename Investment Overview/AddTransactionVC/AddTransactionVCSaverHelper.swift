@@ -74,10 +74,10 @@ extension AddTransactionVC {
         newTransaction.exchange = exchangeNameTextField.stringValue
         newTransaction.type = transactionTypePopUpButton.titleOfSelectedItem
         newTransaction.fees = feesTextField.doubleValue
-        // append this new transaction to the array of transactions - this makes sure it does not vanish after this function
-        CoreDataHelper.transactions.append(newTransaction)
         // link this transaction to its investment
         investmentOfTransaction.addToTransactions(newTransaction)
+        // append this new transaction to the array of transactions
+        CoreDataHelper.transactions.append(newTransaction)
     }
     
     // This function checks that in the selected popUpButtons the investment actually belongs to the selected category

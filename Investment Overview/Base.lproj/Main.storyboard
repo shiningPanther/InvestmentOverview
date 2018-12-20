@@ -1609,6 +1609,9 @@ DQ
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" target="jb1-DN-POs" id="3AE-Yb-GI4"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x8w-XG-grP">
                                 <rect key="frame" x="480" y="13" width="89" height="32"/>
@@ -1619,6 +1622,9 @@ Gw
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="confirmButtonClicked:" target="jb1-DN-POs" id="L9Q-lN-4YE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

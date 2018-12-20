@@ -63,8 +63,8 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(transaction!)
         // Now also delete it from the category array
-        guard let indexToDelete = CoreDataHelper.transactions.index(of: transaction!) else {return}
-        CoreDataHelper.transactions.remove(at: indexToDelete)
+        //guard let indexToDelete = CoreDataHelper.transactions.index(of: transaction!) else {return}
+        //CoreDataHelper.transactions.remove(at: indexToDelete)
     }
     
     // This function removes an investment from the investment array, which is the parent of the transaction
@@ -73,8 +73,8 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(investment)
         // Now also delete it from the investment array
-        guard let indexToDelete = CoreDataHelper.investments.index(of: investment) else {return}
-        CoreDataHelper.investments.remove(at: indexToDelete)
+        //guard let indexToDelete = CoreDataHelper.investments.index(of: investment) else {return}
+        //CoreDataHelper.investments.remove(at: indexToDelete)
     }
     
     // This function removes a category from the category array, which is the grandparent of the transaction
@@ -84,8 +84,8 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(category)
         // Now also delete it from the category array
-        guard let indexToDelete = CoreDataHelper.categories.index(of: category) else {return}
-        CoreDataHelper.categories.remove(at: indexToDelete)
+        //guard let indexToDelete = CoreDataHelper.categories.index(of: category) else {return}
+        //CoreDataHelper.categories.remove(at: indexToDelete)
     }
     
     

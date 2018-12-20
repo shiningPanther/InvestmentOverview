@@ -25,6 +25,7 @@ class OverviewVC: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         updateView()
+        print(CoreDataHelper.transactions.count)
     }
     
     // Every time the selection in the outline view changes, enable or disable the buttons

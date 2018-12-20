@@ -46,4 +46,26 @@ extension EditTransactionVC {
         feesTextField.doubleValue = selectedTransaction?.fees ?? 0.0
     }
     
+    // These are the functions that check if the values in the text fields have changed
+    func unitsBoughtHasChanged() -> Bool {
+        if selectedTransaction?.unitsBought != unitsBoughtTextField.doubleValue {
+            return true
+        }
+        return false
+    }
+    
+    
+    // These are the functions that update the values if there were changes
+    // For predicates look up this site
+    // https://code.tutsplus.com/tutorials/core-data-and-swift-relationships-and-more-fetching--cms-25070
+    func updateUnitsBought() -> Bool {
+        selectedTransaction?.unitsBought = unitsBoughtTextField.doubleValue
+        /*do {
+            let transactions = try context.fetch(Transaction.fetchRequest()) as [NSManagedObject]
+            transactions[0].setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+        } catch {}*/
+        return true
+    }
+    
+    
 }
