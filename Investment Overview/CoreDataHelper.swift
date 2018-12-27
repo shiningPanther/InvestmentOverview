@@ -32,17 +32,14 @@ class CoreDataHelper {
         do {
             CoreDataHelper.categories = try context.fetch(Category.fetchRequest()) as [Category]
         } catch {}
-        print("These are the categories \(CoreDataHelper.categories)")
         
         do {
             CoreDataHelper.investments = try context.fetch(Investment.fetchRequest()) as [Investment]
         } catch {}
-        print("These are the investments \(CoreDataHelper.investments)")
 
         do {
             CoreDataHelper.transactions = try context.fetch(Transaction.fetchRequest()) as [Transaction]
         } catch {}
-        print("These are the transactions \(CoreDataHelper.transactions)")
         sortTransactions() // This shouldn't be necessary since the arrays are always sorted but I'll do it anyways...
     }
     

@@ -94,7 +94,7 @@ class AddTransactionVC: NSViewController {
         guard let categoryName = investmentCategoryPopUpButton.titleOfSelectedItem else {return}
         guard transactionTypePopUpButton.titleOfSelectedItem != nil else {return}
         
-        if isNewInvestment(investmentName: investmentName) {
+        if AddTransactionVC.isNewInvestment(investmentName: investmentName) {
             // Make sure that the investment name is not the name of a category already
             guard !CoreDataHelper.categories.contains(where: {$0.name == investmentName}) else {return}
             // Make sure that the investment name is not the same name as the selected category
@@ -107,7 +107,7 @@ class AddTransactionVC: NSViewController {
                 createInvestment(within: categoryName)
                 createTransaction(belongingTo: investmentName)
             }
-        } else if !isNewInvestment(investmentName: investmentName) {
+        } else if !AddTransactionVC.isNewInvestment(investmentName: investmentName) {
             // Make sure that the correct category of the investment is selected, i.e. that there cannot be an investment in two categories
             guard correctCategoryIsSelected(investmentName: investmentName, categoryName: categoryName) else {return}
             createTransaction(belongingTo: investmentName)
@@ -119,7 +119,7 @@ class AddTransactionVC: NSViewController {
         CoreDataHelper.save()
         
         guard let investment = getInvestmentFromName(investmentName: investmentName) else {return}
-        calculateProfits(investment: investment)
+        SortAndCalculate.calculateProfits(investment: investment)
         
         overviewVC?.updateView() // This should work correctly as the nameArrays are already updated
         // In order to update the detailsVC we need to pass it the correct category and investment first. Since we just created a transaction we can be sure that an investment is selected

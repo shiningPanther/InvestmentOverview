@@ -10,7 +10,7 @@
 		C40FECD020EF9D0800E9B2D8 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FECCF20EF9D0800E9B2D8 /* AddTransactionVC.swift */; };
 		C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */; };
 		C41E893A212CAAA0005F8297 /* AddTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E8939212CAA9F005F8297 /* AddTransactionVCHelper.swift */; };
-		C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */; };
+		C42930F520F2997100423F96 /* SortAndCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F420F2997100423F96 /* SortAndCalculate.swift */; };
 		C42930F920F37D2F00423F96 /* DeleteTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42930F820F37D2F00423F96 /* DeleteTransactionVC.swift */; };
 		C44879CD210CA0A7007953F5 /* EditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879CC210CA0A7007953F5 /* EditTransactionVC.swift */; };
 		C44879CF210CA3FA007953F5 /* OverviewVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44879CE210CA3FA007953F5 /* OverviewVCHelper.swift */; };
@@ -29,6 +29,7 @@
 		C4CF98B4213C4D7100D5FE4C /* EditTransactionVCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF98B3213C4D7100D5FE4C /* EditTransactionVCHelper.swift */; };
 		C4D18E70211CDBF200AD74DC /* OverviewVCOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D18E6F211CDBF200AD74DC /* OverviewVCOutlineView.swift */; };
 		C4E23BCA212E02150049CAAE /* AddTransactionVCSaverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E23BC9212E02150049CAAE /* AddTransactionVCSaverHelper.swift */; };
+		D02E9ED221D05B7A0056081B /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02E9ED121D05B7A0056081B /* Debugging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,7 @@
 		C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C41B5E5D2104F98000864AE7 /* Investment Overview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Investment Overview.entitlements"; sourceTree = "<group>"; };
 		C41E8939212CAA9F005F8297 /* AddTransactionVCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVCHelper.swift; sourceTree = "<group>"; };
-		C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndCalculateFunctions.swift; sourceTree = "<group>"; };
+		C42930F420F2997100423F96 /* SortAndCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndCalculate.swift; sourceTree = "<group>"; };
 		C42930F620F2B1C100423F96 /* Investment_Overview v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v2.xcdatamodel"; sourceTree = "<group>"; };
 		C42930F720F2B25300423F96 /* Investment_Overview v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v3.xcdatamodel"; sourceTree = "<group>"; };
 		C42930F820F37D2F00423F96 /* DeleteTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeleteTransactionVC.swift; path = "Investment Overview/DeleteTransactionVC.swift"; sourceTree = SOURCE_ROOT; };
@@ -61,6 +62,7 @@
 		C4D18E6F211CDBF200AD74DC /* OverviewVCOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewVCOutlineView.swift; sourceTree = "<group>"; };
 		C4E23BC9212E02150049CAAE /* AddTransactionVCSaverHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVCSaverHelper.swift; sourceTree = "<group>"; };
 		C4E2B61A2115F3C4007BF3FC /* Investment_Overview v5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Investment_Overview v5.xcdatamodel"; sourceTree = "<group>"; };
+		D02E9ED121D05B7A0056081B /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +122,9 @@
 				C40CD28221382AB500ECD8F9 /* DeleteTransactionVC */,
 				C460F02B213C13CA0008F3A2 /* EditTransactionVC */,
 				C44879D2210CF6C6007953F5 /* ViewHelper.swift */,
-				C42930F420F2997100423F96 /* SortAndCalculateFunctions.swift */,
+				C42930F420F2997100423F96 /* SortAndCalculate.swift */,
 				C46A02DE211A456500294033 /* CoreDataHelper.swift */,
+				D02E9ED121D05B7A0056081B /* Debugging.swift */,
 				C41B5E5B2104F54E00864AE7 /* SwiftyJSON.swift */,
 				C45C9BDA20E015C400B628AE /* Main.storyboard */,
 				C45C9BD820E015C400B628AE /* Assets.xcassets */,
@@ -193,6 +196,7 @@
 				TargetAttributes = {
 					C45C9BCD20E015B000B628AE = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -237,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4ABD52C2135D855002E0034 /* DeleteTransactionVCHelper.swift in Sources */,
+				D02E9ED221D05B7A0056081B /* Debugging.swift in Sources */,
 				C46DE2FF20FAB062004619EB /* SplitController.swift in Sources */,
 				C46A02DF211A456500294033 /* CoreDataHelper.swift in Sources */,
 				C4A0F072210A2DCA0046D9F5 /* DetailsVCHelper.swift in Sources */,
@@ -252,7 +257,7 @@
 				C46DE2FB20FAAEAD004619EB /* DetailsVC.swift in Sources */,
 				C44879D3210CF6C6007953F5 /* ViewHelper.swift in Sources */,
 				C41B5E5C2104F54E00864AE7 /* SwiftyJSON.swift in Sources */,
-				C42930F520F2997100423F96 /* SortAndCalculateFunctions.swift in Sources */,
+				C42930F520F2997100423F96 /* SortAndCalculate.swift in Sources */,
 				C4E23BCA212E02150049CAAE /* AddTransactionVCSaverHelper.swift in Sources */,
 				C45C9BD220E015B100B628AE /* AppDelegate.swift in Sources */,
 				C44879CD210CA0A7007953F5 /* EditTransactionVC.swift in Sources */,
@@ -400,7 +405,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "shiningPanther.Investment-Overview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -418,7 +423,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "shiningPanther.Investment-Overview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

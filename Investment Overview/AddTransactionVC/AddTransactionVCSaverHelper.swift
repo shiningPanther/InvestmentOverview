@@ -26,11 +26,11 @@ extension AddTransactionVC {
     }
     
     // This function checks if a given investment already exist or is a new investment
-    func isNewInvestment(investmentName: String) -> Bool {
+    static func isNewInvestment(investmentName: String) -> Bool {
         return !CoreDataHelper.investments.contains{$0.name == investmentName}
     }
     
-    // This function checks if a given category already exist or is a new category
+    // This function checks if a given category already exists or is a new category
     func isNewCategory(categoryName: String) -> Bool {
         return !CoreDataHelper.categories.contains{$0.name == categoryName}
     }

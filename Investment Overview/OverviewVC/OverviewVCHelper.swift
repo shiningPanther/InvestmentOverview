@@ -22,12 +22,19 @@ extension OverviewVC {
         detailsVC?.updateView()
     }
     
+    // This function disables the edit and delete buttons
+    func disableButtons() {
+        editButton.isEnabled = false
+        deleteButton.isEnabled = false
+    }
+    
     // This function is called everytime that either the outlineView or tableView changes
     func updateButtons() {
         editButton.isEnabled = false
         deleteButton.isEnabled = false
         // Check if edit and delete buttons should be enabled - first check if there is a selection in the details view and then check if an investment is selected in the outline view
         guard let selectedRow = detailsVC?.tableView?.selectedRow else {return}
+        print("Selected row in table view is \(selectedRow)")
         if selectedRow >= 0 {
             if outlineView.selectedRow >= 0 {
                 guard let name = outlineView.item(atRow: outlineView.selectedRow) as? String else {return}
@@ -70,6 +77,9 @@ extension OverviewVC {
     }
     // This function is only called when the editTransaction button is clicked
     func passSelectionToEditTransactionVC(editTransactionVC: EditTransactionVC) {
+        // Assign detailsVC and overviewVC
+        editTransactionVC.overviewVC = self
+        editTransactionVC.detailsVC = detailsVC
         // Check if a selection in the tableView was made and assign the selected transaction
         guard let selectedRow = detailsVC?.tableView.selectedRow else {return}
         guard selectedRow >= 0 else {return}
@@ -81,7 +91,7 @@ extension OverviewVC {
     
     // All of this might be better with an NSPanel...
     func getWC(identifier: String) -> NSWindowController? {
-        guard let wc = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: identifier)) as? NSWindowController else {return nil}
+        guard let wc = storyboard?.instantiateController(withIdentifier: identifier) as? NSWindowController else {return nil}
         return wc
     }
     func getVC(wc: NSWindowController) -> NSViewController? {
@@ -124,6 +134,39 @@ extension OverviewVC {
         else {
             return (nil, nil, nil)
         }
+    }
+    
+    func selectItem(item: String) {
+        let row = outlineView.row(forItem: item)
+        guard row >= 0 else {return}
+        let indexSet = NSIndexSet(index: row)
+        outlineView.selectRowIndexes(indexSet as IndexSet, byExtendingSelection: true)
+    }
+    
+    func isInvestment(name: String) -> Bool {
+        if CoreDataHelper.investments.contains(where: {$0.name == name}) {
+            return true
+        }
+        return false
+    }
+    
+    func isCategory(name: String) -> Bool {
+        if CoreDataHelper.categories.contains(where: {$0.name == name}) {
+            return true
+        }
+        return false
+    }
+    
+    func updateInvestmentName(oldName: String, newName: String) {
+        let investments = CoreDataHelper.investments.filter({$0.name == oldName})
+        guard investments.count == 1 else {return}
+        investments[0].name = newName
+    }
+    
+    func updateCategoryName(oldName: String, newName: String) {
+        let categories = CoreDataHelper.categories.filter({$0.name == oldName})
+        guard categories.count == 1 else {return}
+        categories[0].name = newName
     }
     
 }
