@@ -51,7 +51,7 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
         
         if tableColumn?.identifier.rawValue == "priceColumn" {
             let price = selectedTransactions?[row].price ?? 0.0
-            cell?.textField?.stringValue = "\(price) €"
+            cell?.textField?.stringValue = String(format: "%.2f €", price)
         }
         
         if tableColumn?.identifier.rawValue == "investedMoneyColumn" {
@@ -74,6 +74,11 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
             else {
                 cell?.textField?.stringValue = String(format: "%.2f €", profit)
             }
+            
+            if profit < 0 {
+                cell?.textField?.textColor = NSColor.red
+            }
+            else {cell?.textField?.textColor = NSColor.black}
         }
         
         return cell

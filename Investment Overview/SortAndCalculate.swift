@@ -15,6 +15,9 @@ class SortAndCalculate {
         for investment in CoreDataHelper.investments {
             SortAndCalculate.calculateProfits(investment: investment)
         }
+        for category in CoreDataHelper.categories {
+            SortAndCalculate.calculateProfits(category: category)
+        }
     }
     
     // Function to calculate the profits of a single investment
@@ -54,6 +57,34 @@ class SortAndCalculate {
         // calculate the unrealized profits
         SortAndCalculate.calculateUnrealizedProfits(investment: investment)
         investment.totalProfits = investment.unrealizedProfits + investment.realizedProfits
+    }
+    
+    // Function to calculate the profits of a category
+    static func calculateProfits(category: Category) {
+        
+        category.investedMoney = 0.0
+        category.realizedProfits = 0.0
+        category.unrealizedProfits = 0.0
+        
+        for investment in CoreDataHelper.getInvestmentsOfCategory(category: category) {
+            category.investedMoney += investment.balance * investment.currentPrice
+            category.realizedProfits += investment.realizedProfits
+            category.unrealizedProfits += investment.unrealizedProfits
+        }
+    }
+    
+    // Function to calculate the total profits
+    static func calculateTotalProfits() -> (Double, Double, Double) {
+        var investedMoney = 0.0
+        var realizedProfits = 0.0
+        var unrealizedProfits = 0.0
+        
+        for category in CoreDataHelper.categories {
+            investedMoney += category.investedMoney
+            realizedProfits += category.realizedProfits
+            unrealizedProfits += category.unrealizedProfits
+        }
+        return (investedMoney, realizedProfits, unrealizedProfits)
     }
     
     // This function calculates the profits made through a sell and assigns it to the attribute profit of the transaction

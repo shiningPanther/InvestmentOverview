@@ -1362,7 +1362,7 @@ DQ
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="gainsColumn" width="128.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="sJC-WO-bA5">
+                                                <tableColumn identifier="profitColumn" width="128.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="sJC-WO-bA5">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Gain/Losses">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1883,7 +1883,7 @@ DQ
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="35r-bQ-Ttw" userLabel="Invested amount">
                                         <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested amount" id="1vH-vk-5Xz">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="1vH-vk-5Xz">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1981,7 +1981,7 @@ DQ
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M5Q-UY-M0G">
                                         <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested amount" id="0bA-tk-xrN">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="0bA-tk-xrN">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2079,7 +2079,7 @@ DQ
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qN5-CU-Nes">
                                         <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested amount" id="jii-e1-r2s">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="jii-e1-r2s">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2497,7 +2497,7 @@ DQ
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.66666666666666663" horizontal="YES" id="GmZ-cL-AfG">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GmZ-cL-AfG">
                                     <rect key="frame" x="1" y="209" width="837" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

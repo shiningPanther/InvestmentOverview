@@ -72,6 +72,13 @@ class CoreDataHelper {
         // return investment.transactions?.allObjects as? [Transaction]
     }
     
+    // returns all of the transactions of an investment
+    static func getInvestmentsOfCategory(category: Category) -> [Investment] {
+        return investments.filter({$0.category == category})
+        // Another possibility would be
+        // return investment.transactions?.allObjects as? [Transaction]
+    }
+    
     static func getBuyTransactionsOfInvestment(investment: Investment) -> [Transaction] {
         return transactions.filter({$0.investment == investment && $0.type == "Buy"})
     }

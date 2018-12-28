@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 
 extension DetailsVC {
@@ -17,6 +18,7 @@ extension DetailsVC {
         if selectedInvestment == nil && selectedCategory == nil {
             hideInvestment()
             hideCategory()
+            updateTotal()
         }
         
         // now check if a category or investment is selected
@@ -31,13 +33,37 @@ extension DetailsVC {
         }
     }
     
+    func updateTotal() {
+        let (investedMoney, realizedProfits, unrealizedProfits) = SortAndCalculate.calculateTotalProfits()
+        totalInvestedMoneyAmount.stringValue = String(format: "%.2f €", investedMoney)
+        totalRealizedProfitsAmount.stringValue = String(format: "%.2f €", realizedProfits)
+        if realizedProfits < 0 {totalRealizedProfitsAmount.textColor = NSColor.red}
+        else {totalRealizedProfitsAmount.textColor = NSColor.black}
+        totalUnrealizedProfitsAmount.stringValue = String(format: "%.2f €", unrealizedProfits)
+        if unrealizedProfits < 0 {totalUnrealizedProfitsAmount.textColor = NSColor.red}
+        else {totalUnrealizedProfitsAmount.textColor = NSColor.black}
+        totalTotalProfitsAmount.stringValue = String(format: "%.2f €", realizedProfits + unrealizedProfits)
+        if realizedProfits + unrealizedProfits < 0 {totalTotalProfitsAmount.textColor = NSColor.red}
+        else {totalTotalProfitsAmount.textColor = NSColor.black}
+    }
+    
     func updateCategory(category: Category) {
         categoryLabel.stringValue = "Category: \(category.name ?? "No category selected - This should never happen...")"
+        categoryInvestedMoneyAmount.stringValue = String(format: "%.2f €", category.investedMoney)
+        categoryRealizedProfitsAmount.stringValue = String(format: "%.2f €", category.realizedProfits)
+        if category.realizedProfits < 0 {categoryRealizedProfitsAmount.textColor = NSColor.red}
+        else {categoryRealizedProfitsAmount.textColor = NSColor.black}
+        categoryUnrealizedProfitsAmount.stringValue = String(format: "%.2f €", category.unrealizedProfits)
+        if category.unrealizedProfits < 0 {categoryUnrealizedProfitsAmount.textColor = NSColor.red}
+        else {categoryUnrealizedProfitsAmount.textColor = NSColor.black}
+        categoryTotalProfitsAmount.stringValue = String(format: "%.2f €", category.realizedProfits + category.unrealizedProfits)
+        if category.realizedProfits + category.unrealizedProfits < 0 {categoryTotalProfitsAmount.textColor = NSColor.red}
+        else {categoryTotalProfitsAmount.textColor = NSColor.black}
+        
+        updateTotal()
     }
     
     func updateInvestment(investment: Investment) {
-        guard let category = investment.category else {return}
-        updateCategory(category: category)
         
         investmentLabel.stringValue = String(format: "%@:", investment.name ?? "")
         balanceLabel.stringValue = String(format: "%.4f %@", investment.balance, investment.symbol ?? "")
@@ -54,9 +80,19 @@ extension DetailsVC {
         
         investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.balance * investment.currentPrice)
         investmentRealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.realizedProfits)
+        if investment.realizedProfits < 0 {investmentRealizedProfitsAmount.textColor = NSColor.red}
+        else {investmentRealizedProfitsAmount.textColor = NSColor.black}
         investmentUnrealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.unrealizedProfits)
-        
+        if investment.unrealizedProfits < 0 {investmentUnrealizedProfitsAmount.textColor = NSColor.red}
+        else {investmentUnrealizedProfitsAmount.textColor = NSColor.black}
+        investmentTotalProfitsAmount.stringValue = String(format: "%.2f €", investment.totalProfits)
+        if investment.totalProfits < 0 {investmentTotalProfitsAmount.textColor = NSColor.red}
+        else {investmentTotalProfitsAmount.textColor = NSColor.black}
+
         tableView.reloadData()
+        
+        guard let category = investment.category else {return}
+        updateCategory(category: category)
     }
     
     func hideInvestment() {
