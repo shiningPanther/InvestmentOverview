@@ -116,10 +116,9 @@ class AddTransactionVC: NSViewController {
         // Now we only need to save, update the views and close the window...
         
         CoreDataHelper.sortTransactions() // sorts transactions, investments and categories
-        CoreDataHelper.save()
+        SortAndCalculate.calculateAllProfits()
         
-        guard let investment = getInvestmentFromName(investmentName: investmentName) else {return}
-        SortAndCalculate.calculateProfits(investment: investment)
+        CoreDataHelper.save()
         
         overviewVC?.updateView() // This should work correctly as the nameArrays are already updated
         // In order to update the detailsVC we need to pass it the correct category and investment first. Since we just created a transaction we can be sure that an investment is selected

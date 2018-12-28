@@ -12,20 +12,6 @@ import Foundation
 extension DetailsVC {
     
     func updateView() {
-        // test to see if we can get the ETH price
-        if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR") {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard error == nil else{
-                    print("An error occured")
-                    print(error!)
-                    return
-                }
-                guard data != nil else {return}
-                // Make a json object out of the returned data
-                let json = JSON(data!)
-                print(json["EUR"].double ?? "Not defined")
-                }.resume()
-        }
         
         // nothing in the overviewVC outline view is selected
         if selectedInvestment == nil && selectedCategory == nil {
@@ -46,13 +32,30 @@ extension DetailsVC {
     }
     
     func updateCategory(category: Category) {
-        categoryLabel.stringValue = "Category: \(category.name!)"
+        categoryLabel.stringValue = "Category: \(category.name ?? "No category selected - This should never happen...")"
     }
     
     func updateInvestment(investment: Investment) {
-        categoryLabel.stringValue = "Category: \(investment.category?.name ?? "No category selected - This should never happen...")"
-        investmentLabel.stringValue = "\(investment.name ?? "No investment selected - This should never happen...")"
-        balanceLabel.stringValue = String(investment.balance)
+        guard let category = investment.category else {return}
+        updateCategory(category: category)
+        
+        investmentLabel.stringValue = String(format: "%@:", investment.name ?? "")
+        balanceLabel.stringValue = String(format: "%.4f %@", investment.balance, investment.symbol ?? "")
+        currentPriceLabel.stringValue = String(format: "Current price: %.4f €", investment.currentPrice)
+        
+        // This is for the date label
+        let date = investment.lastUpdate ?? Date()
+        let formatter = DateFormatter()
+        // This is to get a nice format for the date
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        let dateString = formatter.string(from: date)
+        lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
+        
+        investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.balance * investment.currentPrice)
+        investmentRealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.realizedProfits)
+        investmentUnrealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.unrealizedProfits)
+        
         tableView.reloadData()
     }
     

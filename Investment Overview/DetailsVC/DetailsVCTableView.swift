@@ -67,8 +67,13 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
         }
         
         if tableColumn?.identifier.rawValue == "profitColumn" {
-            let profit = 0.0
-            cell?.textField?.doubleValue = profit
+            let profit = selectedTransactions?[row].profit ?? 0.0
+            if profit == 0 {
+                cell?.textField?.stringValue = "-"
+            }
+            else {
+                cell?.textField?.stringValue = String(format: "%.2f €", profit)
+            }
         }
         
         return cell

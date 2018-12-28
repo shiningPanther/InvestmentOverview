@@ -29,6 +29,9 @@ class OverviewVC: NSViewController {
         //Debugging.deleteTransactionsOfInvestment(investmentName: "zzz")
         //Debugging.deleteInvestment(investmentName: "zzz")
         
+        // The following line ensures that the last column is not cut when resizing the outline view
+        outlineView.columnAutoresizingStyle = NSOutlineView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
+        
         updateView()
     }
     

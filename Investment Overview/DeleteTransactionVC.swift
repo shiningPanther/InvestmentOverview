@@ -50,6 +50,10 @@ class DeleteTransactionVC: NSViewController {
                 deleteCategory(transaction: transactionToDelete)
             }
         }
+        
+        CoreDataHelper.sortTransactions()
+        SortAndCalculate.calculateAllProfits()
+        
         // save the changes
         CoreDataHelper.save()
         // update overviews

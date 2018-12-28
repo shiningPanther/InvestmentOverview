@@ -103,8 +103,8 @@ class EditTransactionVC: NSViewController {
             
         }
         
-        //CoreDataHelper.sortTransactions()
-        //SortAndCalculate.calculateProfits(investment: selectedInvestment!)
+        CoreDataHelper.sortTransactions()
+        SortAndCalculate.calculateAllProfits()
         
         CoreDataHelper.save()
 

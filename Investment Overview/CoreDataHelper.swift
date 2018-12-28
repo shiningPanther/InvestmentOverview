@@ -41,6 +41,7 @@ class CoreDataHelper {
             CoreDataHelper.transactions = try context.fetch(Transaction.fetchRequest()) as [Transaction]
         } catch {}
         sortTransactions() // This shouldn't be necessary since the arrays are always sorted but I'll do it anyways...
+        SortAndCalculate.calculateAllProfits()
     }
     
     // This function just sorts the variables categories, investments and transactions by name, name and date respectively
@@ -69,6 +70,10 @@ class CoreDataHelper {
         return transactions.filter({$0.investment == investment})
         // Another possibility would be
         // return investment.transactions?.allObjects as? [Transaction]
+    }
+    
+    static func getBuyTransactionsOfInvestment(investment: Investment) -> [Transaction] {
+        return transactions.filter({$0.investment == investment && $0.type == "Buy"})
     }
     
     // just saves the context

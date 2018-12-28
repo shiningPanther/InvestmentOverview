@@ -56,6 +56,10 @@ class DetailsVC: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        
+        // The following line ensures that the last column is not cut when the window is resized
+        tableView.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
+        
         updateView()
     }
     
