@@ -13,7 +13,6 @@ extension DetailsVC {
     
     func updateView() {
         // test to see if we can get the ETH price
-        print("This is done in the updateView function of DetailsVC")
         if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard error == nil else{

@@ -18,7 +18,6 @@ class OverviewVC: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     
     override func viewDidLoad() {
-        print("Done with OverviewVC viewDidLoad")
         super.viewDidLoad()
     }
     
@@ -31,7 +30,6 @@ class OverviewVC: NSViewController {
         //Debugging.deleteInvestment(investmentName: "zzz")
         
         updateView()
-        print(CoreDataHelper.transactions.count)
     }
     
     // Every time the selection in the outline view changes, enable or disable the buttons

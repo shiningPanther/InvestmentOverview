@@ -10,11 +10,14 @@ import Foundation
 
 
 class SortAndCalculate {
+    
     // Function to calculate the profits
     static func calculateProfits(investment: Investment) {
         investment.balance = 0.0
+        
         // go through each transaction
         for transaction in CoreDataHelper.getTransactionsOfInvestment(investment: investment) {
+            
             if transaction.type == "Buy" {
                 investment.balance += transaction.unitsBought
             }

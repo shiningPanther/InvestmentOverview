@@ -18,8 +18,6 @@ class SplitController: NSSplitViewController {
         
         // load here the data from core data
         CoreDataHelper.loadTransactions()
-        print(CoreDataHelper.investments)
-        print(CoreDataHelper.transactions)
         
         // assign here the refereneces between the split view controllers
         guard let overviewVC = overviewItem.viewController as? OverviewVC else {return}

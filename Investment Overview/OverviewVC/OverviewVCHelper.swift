@@ -12,7 +12,6 @@ import Cocoa
 extension OverviewVC {
     
     func updateView() {
-        print("overviewVC updateView has been called")
         // Reload the outline view and give the info to detailsVC to update its view accordingly
         outlineView.reloadData()
         // Enable or disable edit and delete buttons
@@ -34,7 +33,6 @@ extension OverviewVC {
         deleteButton.isEnabled = false
         // Check if edit and delete buttons should be enabled - first check if there is a selection in the details view and then check if an investment is selected in the outline view
         guard let selectedRow = detailsVC?.tableView?.selectedRow else {return}
-        print("Selected row in table view is \(selectedRow)")
         if selectedRow >= 0 {
             if outlineView.selectedRow >= 0 {
                 guard let name = outlineView.item(atRow: outlineView.selectedRow) as? String else {return}

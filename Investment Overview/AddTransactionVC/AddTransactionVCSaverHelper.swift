@@ -20,7 +20,6 @@ extension AddTransactionVC {
     // Returns an investment from an investment name
     func getInvestmentFromName(investmentName: String) -> Investment? {
         let investmentArray = CoreDataHelper.investments.filter({$0.name == investmentName})
-        print("There are \(investmentArray.count) investments")
         guard investmentArray.count == 1 else {return nil}
         return investmentArray[0]
     }
@@ -83,11 +82,8 @@ extension AddTransactionVC {
     // This function checks that in the selected popUpButtons the investment actually belongs to the selected category
     func correctCategoryIsSelected(investmentName: String, categoryName: String) -> Bool {
         // get investment and category from names
-        print("We are in the correctCategoryIsSelected function")
         guard let investment = getInvestmentFromName(investmentName: investmentName) else {return false}
-        print("The investment is \(investment)")
         guard let category = getCategoryFromName(categoryName: categoryName) else {return false}
-        print("The ")
         if investment.category == category {
             return true
         } else {
