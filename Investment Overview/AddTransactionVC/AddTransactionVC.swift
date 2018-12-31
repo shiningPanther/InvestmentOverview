@@ -42,6 +42,10 @@ class AddTransactionVC: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func categoryTextFieldEdited(_ sender: NSTextField) {
+        investmentCategoryAddButtonClicked(self)
+    }
+    
     @IBAction func investmentCategoryAddButtonClicked(_ sender: Any) {
         // Add the text of the text field to the investment category pop up button and make it active
         let title = investmentCategoryTextField.stringValue
@@ -73,6 +77,10 @@ class AddTransactionVC: NSViewController {
             investmentNamePopUpButton.addItem(withTitle: title)
             investmentNamePopUpButton.selectItem(withTitle: title)
         }
+    }
+    
+    @IBAction func investmentTextFieldEdited(_ sender: NSTextField) {
+        investmentNameAddButtonClicked(self)
     }
     
     @IBAction func investmentNamePopUpButtonChanged(_ sender: Any) {

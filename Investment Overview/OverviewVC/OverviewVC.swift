@@ -29,6 +29,17 @@ class OverviewVC: NSViewController {
         //Debugging.deleteTransactionsOfInvestment(investmentName: "zzz")
         //Debugging.deleteInvestment(investmentName: "zzz")
         
+        print("At launch of program")
+        for category in CoreDataHelper.categories {
+            print(category.name)
+        }
+        for investment in CoreDataHelper.investments {
+            print(investment.name)
+            print(investment.balance)
+        }
+        print(CoreDataHelper.transactions.count)
+
+        
         // The following line ensures that the last column is not cut when resizing the outline view
         outlineView.columnAutoresizingStyle = NSOutlineView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         
@@ -40,6 +51,11 @@ class OverviewVC: NSViewController {
     func outlineViewSelectionDidChange(_ notification: Notification) {
         // Update the buttons - after a new selection within the outline view they should always be disabled...
         disableButtons()
+        // Calculate the profits again
+        let selectedRow = outlineView.selectedRow
+        let selectedItem = outlineView.item(atRow: selectedRow)
+        SortAndCalculate.calculateAllProfits()
+        outlineView.reloadItem(selectedItem)
         // Give info to detailsVC
         passSelectionToDetailsVC()
         detailsVC?.updateView()
@@ -52,6 +68,13 @@ class OverviewVC: NSViewController {
         passSelectionToAddTransactionVC(addTransactionVC: vc)
         vc.updateView()
         wc.showWindow(nil)
+    }
+    
+    @IBAction func refreshButtonClicke(_ sender: Any) {
+        SortAndCalculate.calculateAllProfits()
+        let selectedRow = outlineView.selectedRowIndexes
+        outlineView.reloadData()
+        outlineView.selectRowIndexes(selectedRow, byExtendingSelection: false)
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {

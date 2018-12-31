@@ -30,7 +30,7 @@ class SortAndCalculate {
         
         let symbol = investment.symbol ?? ""
         let apiName = investment.apiWebsite ?? ""
-        getCurrentPrice(investment: investment, symbol: symbol, apiName: apiName)
+        SortAndCalculate.getCurrentPrice(investment: investment, symbol: symbol, apiName: apiName)
         
         // go through each transaction in order to calculate the balance and profits
         for transaction in CoreDataHelper.getTransactionsOfInvestment(investment: investment) {
@@ -39,6 +39,8 @@ class SortAndCalculate {
             transaction.remainingBalance = 0.0
             // Also the profit of each transaction is set to 0 initially
             transaction.profit = 0.0
+            
+            print("I am calculating the profits of the investment")
 
             if transaction.type == "Buy" {
                 investment.balance += transaction.unitsBought
@@ -118,7 +120,8 @@ class SortAndCalculate {
         for buyTransaction in CoreDataHelper.getBuyTransactionsOfInvestment(investment: investment) {
             if buyTransaction.remainingBalance != 0 {
                 let priceDifference = investment.currentPrice - buyTransaction.price
-                let profit = priceDifference * buyTransaction.remainingBalance
+                let ratioSold = buyTransaction.remainingBalance/buyTransaction.unitsBought
+                let profit = priceDifference * buyTransaction.remainingBalance - buyTransaction.fees * ratioSold
                 buyTransaction.profit = profit
                 investment.unrealizedProfits += profit
             }

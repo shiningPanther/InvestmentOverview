@@ -706,7 +706,7 @@
         <scene sceneID="P4c-rw-Scd">
             <objects>
                 <windowController storyboardIdentifier="addTransactionWC" id="A4k-A8-rGZ" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jvw-Pr-98r">
+                    <window key="window" title="Add Transaction" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jvw-Pr-98r">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="163" y="208" width="480" height="270"/>
@@ -971,6 +971,9 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="categoryTextFieldEdited:" target="Jou-5d-Ucs" id="Xno-os-JYg"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="93D-6H-dAv">
                                 <rect key="frame" x="137" y="128" width="150" height="22"/>
@@ -1006,6 +1009,9 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="investmentTextFieldEdited:" target="Jou-5d-Ucs" id="txe-QC-S93"/>
+                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Mh-Te-ebC">
                                 <rect key="frame" x="532" y="232" width="65" height="32"/>
@@ -1060,6 +1066,9 @@
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8DV-1u-dx0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="saveButtonClicked:" target="Jou-5d-Ucs" id="9lg-nJ-ymy"/>
@@ -1445,6 +1454,16 @@ DQ
                                     <action selector="deleteButtonClicked:" target="Hyp-fK-olf" id="DpL-mD-SY4"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qkU-VY-OaJ">
+                                <rect key="frame" x="119" y="-7" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yho-0O-yiI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshButtonClicke:" target="Hyp-fK-olf" id="5Wy-ah-5IF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="1Ve-nH-Stz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5sQ-ME-vu6" secondAttribute="trailing" id="46F-P8-sdM"/>
@@ -1453,11 +1472,13 @@ DQ
                             <constraint firstAttribute="trailing" secondItem="Vyn-NS-vCd" secondAttribute="trailing" id="A0u-dz-HE4"/>
                             <constraint firstAttribute="trailing" secondItem="bPt-Z8-6hK" secondAttribute="trailing" id="Nic-KY-9kK"/>
                             <constraint firstItem="bPt-Z8-6hK" firstAttribute="leading" secondItem="1Ve-nH-Stz" secondAttribute="trailing" id="OdF-Ba-zZX"/>
+                            <constraint firstItem="qkU-VY-OaJ" firstAttribute="centerY" secondItem="5sQ-ME-vu6" secondAttribute="centerY" id="P8P-aY-CFl"/>
                             <constraint firstAttribute="bottom" secondItem="bPt-Z8-6hK" secondAttribute="bottom" id="Wdq-A8-WfD"/>
                             <constraint firstItem="5sQ-ME-vu6" firstAttribute="leading" secondItem="sHh-YS-wci" secondAttribute="leading" id="ew0-jC-SoD"/>
                             <constraint firstItem="1Ve-nH-Stz" firstAttribute="bottom" secondItem="bPt-Z8-6hK" secondAttribute="bottom" id="ijM-ab-S5o"/>
                             <constraint firstItem="bPt-Z8-6hK" firstAttribute="top" secondItem="Vyn-NS-vCd" secondAttribute="bottom" id="khK-DT-XMg"/>
                             <constraint firstItem="Vyn-NS-vCd" firstAttribute="leading" secondItem="sHh-YS-wci" secondAttribute="leading" id="nW7-4f-2ut"/>
+                            <constraint firstItem="qkU-VY-OaJ" firstAttribute="centerX" secondItem="sHh-YS-wci" secondAttribute="centerX" id="wPA-XX-vpR"/>
                             <constraint firstItem="1Ve-nH-Stz" firstAttribute="centerY" secondItem="bPt-Z8-6hK" secondAttribute="centerY" id="yeV-j2-ear"/>
                         </constraints>
                     </view>
