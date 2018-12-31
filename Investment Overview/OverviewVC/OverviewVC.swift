@@ -29,17 +29,6 @@ class OverviewVC: NSViewController {
         //Debugging.deleteTransactionsOfInvestment(investmentName: "zzz")
         //Debugging.deleteInvestment(investmentName: "zzz")
         
-        print("At launch of program")
-        for category in CoreDataHelper.categories {
-            print(category.name)
-        }
-        for investment in CoreDataHelper.investments {
-            print(investment.name)
-            print(investment.balance)
-        }
-        print(CoreDataHelper.transactions.count)
-
-        
         // The following line ensures that the last column is not cut when resizing the outline view
         outlineView.columnAutoresizingStyle = NSOutlineView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         

@@ -51,26 +51,8 @@ class DeleteTransactionVC: NSViewController {
             }
         }
         
-        print("Before save action")
-        for category in CoreDataHelper.categories {
-            print(category.name)
-        }
-        for investment in CoreDataHelper.investments {
-            print(investment.name)
-        }
-        print(CoreDataHelper.transactions.count)
-        
         // save the changes
         CoreDataHelper.save()
-        
-        print("After save action")
-        for category in CoreDataHelper.categories {
-            print(category.name)
-        }
-        for investment in CoreDataHelper.investments {
-            print(investment.name)
-        }
-        print(CoreDataHelper.transactions.count)
         
         CoreDataHelper.sortTransactions()
         SortAndCalculate.calculateAllProfits()

@@ -56,10 +56,19 @@ class SortAndCalculate {
             }
         }
         
+        SortAndCalculate.calculateInvestedMoney(investment: investment)
+        
         // calculate the unrealized profits
         SortAndCalculate.calculateUnrealizedProfits(investment: investment)
         investment.totalProfits = investment.unrealizedProfits + investment.realizedProfits
     }
+    
+    static func calculateInvestedMoney (investment: Investment) {
+        var price = investment.currentPrice
+        if price == 0 {
+            price = CoreDataHelper.getTransactionsOfInvestment(investment: investment).last?.price ?? 0.0
+        }
+        investment.investedMoney = price * investment.balance }
     
     // Function to calculate the profits of a category
     static func calculateProfits(category: Category) {
@@ -69,7 +78,7 @@ class SortAndCalculate {
         category.unrealizedProfits = 0.0
         
         for investment in CoreDataHelper.getInvestmentsOfCategory(category: category) {
-            category.investedMoney += investment.balance * investment.currentPrice
+            category.investedMoney += investment.investedMoney
             category.realizedProfits += investment.realizedProfits
             category.unrealizedProfits += investment.unrealizedProfits
         }
@@ -119,14 +128,17 @@ class SortAndCalculate {
         // Go through each BUY transaction, check how much is still there and see how much profits have been made
         for buyTransaction in CoreDataHelper.getBuyTransactionsOfInvestment(investment: investment) {
             if buyTransaction.remainingBalance != 0 {
-                let priceDifference = investment.currentPrice - buyTransaction.price
+                // priceDifference is either the "real" price difference or if no current price is available we assume the price of the last transaction to be the current price
+                var priceDifference = 0.0
+                if investment.currentPrice != 0 {
+                    priceDifference = investment.currentPrice - buyTransaction.price }
+                else {
+                    let price = CoreDataHelper.getTransactionsOfInvestment(investment: investment).last?.price ?? buyTransaction.price
+                    priceDifference = price - buyTransaction.price }
                 let ratioSold = buyTransaction.remainingBalance/buyTransaction.unitsBought
                 let profit = priceDifference * buyTransaction.remainingBalance - buyTransaction.fees * ratioSold
                 buyTransaction.profit = profit
-                investment.unrealizedProfits += profit
-            }
-        }
-    }
+                investment.unrealizedProfits += profit }}}
     
     
     static func getCurrentPrice(investment: Investment, symbol: String, apiName: String) {
@@ -135,7 +147,7 @@ class SortAndCalculate {
         
         switch apiName {
             
-        case "Cryptocompare":
+        case "CryptoCompare":
             let urlString = String(format: "https://min-api.cryptocompare.com/data/price?fsym=%@&tsyms=EUR", symbol)
             print(urlString)
             guard let url = URL(string: urlString) else {return}

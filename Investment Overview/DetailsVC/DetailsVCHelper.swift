@@ -68,6 +68,7 @@ extension DetailsVC {
         investmentLabel.stringValue = String(format: "%@:", investment.name ?? "")
         balanceLabel.stringValue = String(format: "%.4f %@", investment.balance, investment.symbol ?? "")
         currentPriceLabel.stringValue = String(format: "Current price: %.4f €", investment.currentPrice)
+        if investment.currentPrice == 0.0 { currentPriceLabel.stringValue = "Current Price: N/A"}
         
         // This is for the date label
         let date = investment.lastUpdate ?? Date()
@@ -78,7 +79,7 @@ extension DetailsVC {
         let dateString = formatter.string(from: date)
         lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
         
-        investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.balance * investment.currentPrice)
+        investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.investedMoney)
         investmentRealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.realizedProfits)
         if investment.realizedProfits < 0 {investmentRealizedProfitsAmount.textColor = NSColor.red}
         else {investmentRealizedProfitsAmount.textColor = NSColor.black}

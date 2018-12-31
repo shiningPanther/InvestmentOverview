@@ -11,6 +11,7 @@
         <attribute name="apiWebsite" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="currentPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="investedMoney" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="3420" positionY="5085" width="128" height="120"/>
-        <element name="Investment" positionX="3600" positionY="5085" width="128" height="225"/>
+        <element name="Investment" positionX="3600" positionY="5085" width="128" height="240"/>
         <element name="Transaction" positionX="3771" positionY="5085" width="128" height="195"/>
         <element name="Transaction2" positionX="3420" positionY="5292" width="128" height="163"/>
     </elements>

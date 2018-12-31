@@ -15,6 +15,8 @@ extension AddTransactionVC {
         // Populate the investmentCategory pop up button
         investmentCategoryPopUpButton.addItems(withTitles: getCategoryNames())
         investmentCategoryPopUpButton.selectItem(at: -1)
+        // Populate the apiWebsite
+        apiPopUpButton.addItems(withTitles: ViewHelper.apiNames)
         
         // Show an item in the investment category pop up button if either an investment or category are selected
         if selectedCategory != nil {
@@ -45,8 +47,7 @@ extension AddTransactionVC {
             isinTextField.stringValue = isin
         }
         if let api = investment?.apiWebsite {
-            // This still needs to be changed: We want to have here all the possible apis where to get real time data...
-            apiPopUpButton.addItem(withTitle: api)
+            // Select the api name of the investment
             apiPopUpButton.selectItem(withTitle: api)
         }
     }

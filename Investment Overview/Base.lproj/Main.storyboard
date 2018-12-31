@@ -879,16 +879,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="wSW-YD-dXT"/>
                                                 </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="CryptoCompare" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="5hi-D0-uXe" id="cVi-2E-hWT">
+                                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="cVi-2E-hWT">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
-                                                    <menu key="menu" id="6fl-gs-cEZ">
-                                                        <items>
-                                                            <menuItem title="CryptoCompare" state="on" id="5hi-D0-uXe">
-                                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                            </menuItem>
-                                                        </items>
-                                                    </menu>
+                                                    <menu key="menu" id="6fl-gs-cEZ"/>
                                                 </popUpButtonCell>
                                             </popUpButton>
                                         </subviews>
