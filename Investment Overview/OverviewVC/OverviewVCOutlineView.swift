@@ -58,14 +58,14 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
                 let categories = CoreDataHelper.categories.filter({$0.name == item})
                 guard categories.count == 1 else {return nil}
                 totalProfits = categories[0].realizedProfits + categories[0].unrealizedProfits
-                text = String(format: "%.2f", totalProfits)
+                text = String(format: "%.2f €", totalProfits)
                 
             }
             if CoreDataHelper.investments.contains(where: {$0.name == item}) {
                 let investments = CoreDataHelper.investments.filter({$0.name == item})
                 guard investments.count == 1 else {return nil}
                 totalProfits = investments[0].realizedProfits + investments[0].unrealizedProfits
-                text = String(format: "%.2f", totalProfits)
+                text = String(format: "%.2f €", totalProfits)
             }
         }
         

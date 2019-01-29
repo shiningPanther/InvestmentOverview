@@ -40,6 +40,9 @@ class DeleteTransactionVC: NSViewController {
         case false:
             // Only delete the transaction
             deleteTransaction(transaction: transactionToDelete)
+            guard let investmentName = transactionToDelete?.investment?.name else {return}
+            overviewVC?.selectItem(item: investmentName)
+
             
         // It is the only transaction
         case true:
@@ -59,7 +62,8 @@ class DeleteTransactionVC: NSViewController {
         
         // update overviews
         overviewVC?.updateView()
-        detailsVC?.updateView()
+        let selectedRow = overviewVC?.outlineView.row(forItem: transactionToDelete?.investment?.name)
+        overviewVC?.outlineView.selectRowIndexes(NSIndexSet(index: selectedRow ?? 0) as IndexSet, byExtendingSelection: false)
         // Close window
         view.window?.close()
     }

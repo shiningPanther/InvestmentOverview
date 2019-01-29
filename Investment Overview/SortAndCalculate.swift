@@ -40,8 +40,6 @@ class SortAndCalculate {
             // Also the profit of each transaction is set to 0 initially
             transaction.profit = 0.0
             
-            print("I am calculating the profits of the investment")
-
             if transaction.type == "Buy" {
                 investment.balance += transaction.unitsBought
                 transaction.remainingBalance += transaction.unitsBought
@@ -106,16 +104,16 @@ class SortAndCalculate {
         guard let investment = sellTransaction.investment else {return}
         for buyTransaction in CoreDataHelper.getBuyTransactionsOfInvestment(investment: investment) {
             
-            buyTransaction.remainingBalance -= sellTransaction.remainingBalance
-            if buyTransaction.remainingBalance < 0 {buyTransaction.remainingBalance = 0}
-            let unitsSold = buyTransaction.unitsBought - buyTransaction.remainingBalance
+            var unitsSold = sellTransaction.remainingBalance
+            if unitsSold > buyTransaction.remainingBalance {unitsSold = buyTransaction.remainingBalance}
+            buyTransaction.remainingBalance -= unitsSold
             sellTransaction.remainingBalance -= unitsSold
             let priceDifference = sellTransaction.price - buyTransaction.price
             sellTransaction.profit += unitsSold * priceDifference
             let ratioSold = unitsSold / buyTransaction.unitsBought
             sellTransaction.profit -= buyTransaction.fees * ratioSold
             
-            if sellTransaction.remainingBalance == 0 {
+            if sellTransaction.remainingBalance == 0.0 {
                 sellTransaction.profit -= sellTransaction.fees
                 break
             }

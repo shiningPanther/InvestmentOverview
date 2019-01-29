@@ -48,4 +48,14 @@ class Debugging {
             investment.category = category[0]
         }
     }
+    
+    // This function prints the transactions within a particular investment
+    static func printTransactionsOfInvestment(investmentName: String) {
+        let investment = CoreDataHelper.investments.filter{$0.name == investmentName}
+        guard investment.count == 1 else {return}
+        for transaction in CoreDataHelper.getTransactionsOfInvestment(investment: investment[0]) {
+            print(transaction.remainingBalance)
+        }
+        print(investment[0].balance)
+    }
 }
