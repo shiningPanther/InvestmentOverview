@@ -53,6 +53,7 @@ extension AddTransactionVC {
         newInvestment.name = investmentNamePopUpButton.titleOfSelectedItem
         newInvestment.symbol = symbolTextField.stringValue
         newInvestment.isin = isinTextField.stringValue
+        newInvestment.apiWebsite = apiPopUpButton.titleOfSelectedItem
         // append this new investment to the array of investments - this makes sure it does not vanish after this function
         CoreDataHelper.investments.append(newInvestment)
         // link this investment to its category

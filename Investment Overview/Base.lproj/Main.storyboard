@@ -1379,7 +1379,7 @@ DQ
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="0zz-GJ-5j3">
-                                                            <rect key="frame" x="191.5" y="1" width="128" height="17"/>
+                                                            <rect key="frame" x="192" y="1" width="128" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="E2p-oU-ZWh">
@@ -1866,7 +1866,7 @@ DQ
             <objects>
                 <viewController id="C1O-hy-Znr" customClass="DetailsVC" customModule="Investment_Overview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="cHs-w8-nPZ">
-                        <rect key="frame" x="0.0" y="0.0" width="879" height="552"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1047" height="552"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dlN-Pc-sR1">
@@ -1894,18 +1894,18 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KF6-Od-L2D">
-                                <rect key="frame" x="20" y="489" width="839" height="17"/>
+                                <rect key="frame" x="20" y="489" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="35r-bQ-Ttw" userLabel="Invested amount">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Currently invested money" id="1vH-vk-5Xz">
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Money currently invested" id="1vH-vk-5Xz">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-lX-5on">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized profits" id="X5L-xu-jCc">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1913,7 +1913,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nZ7-O5-NhA">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="WDS-2p-DsO">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1921,7 +1921,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-nc-Dru">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="TtL-zX-dHu">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1943,10 +1943,10 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Po-thF">
-                                <rect key="frame" x="20" y="464" width="839" height="17"/>
+                                <rect key="frame" x="20" y="464" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-5b-qsJ">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="hq6-e5-Trg">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1954,7 +1954,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TNr-or-dTL">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized amount" id="MNh-WS-NX4">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1962,7 +1962,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="krC-oS-aQz">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="78f-fY-5eT">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1970,7 +1970,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9d1-JW-4jy">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="8NO-qy-4lz">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1992,18 +1992,18 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkt-SQ-FKS">
-                                <rect key="frame" x="20" y="391" width="839" height="17"/>
+                                <rect key="frame" x="20" y="391" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M5Q-UY-M0G">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Currently invested money" id="0bA-tk-xrN">
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Money currently invested" id="0bA-tk-xrN">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FnE-UD-OYe">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized profits" id="Yvo-fl-jSh">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2011,7 +2011,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ee9-p5-fMw">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="OfL-dG-OWF">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2019,7 +2019,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-uD-ySD">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="ekH-Wj-8aO">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2041,10 +2041,10 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6sf-6U-0OA">
-                                <rect key="frame" x="20" y="366" width="839" height="17"/>
+                                <rect key="frame" x="20" y="366" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-p2-rSG">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="3GG-Ci-K4k">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2052,7 +2052,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWN-Pa-MFw">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized amount" id="Nxm-dY-IYA">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2060,7 +2060,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QSN-n0-AgA">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="5jM-2u-L58">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2068,7 +2068,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gAE-oA-buq">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="1Cr-o7-z9s">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2090,18 +2090,18 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-Md-2ca">
-                                <rect key="frame" x="20" y="291" width="839" height="17"/>
+                                <rect key="frame" x="20" y="291" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qN5-CU-Nes">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Currently invested money" id="jii-e1-r2s">
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Money currently invested" id="jii-e1-r2s">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pMI-c3-bo2">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized profits" id="DRI-zR-idv">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2109,7 +2109,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a08-pF-m98">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="LpS-Uq-lmj">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2117,7 +2117,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tpR-fy-aas">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="5rD-0a-cca">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2139,10 +2139,10 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vlz-nP-cXe">
-                                <rect key="frame" x="20" y="266" width="839" height="17"/>
+                                <rect key="frame" x="20" y="266" width="1007" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-m5-7hn">
-                                        <rect key="frame" x="-2" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="-2" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Invested money" id="Uk3-ft-J8r">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2150,7 +2150,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QlQ-Yd-10W" userLabel="Investment Realized Amount">
-                                        <rect key="frame" x="210" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="252" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realized amount" id="yx9-BB-IZ0">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2158,7 +2158,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OwD-VX-miF">
-                                        <rect key="frame" x="422" y="0.0" width="207" height="17"/>
+                                        <rect key="frame" x="506" y="0.0" width="249" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unrealized profits" id="Ucm-Bo-jxd">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2166,7 +2166,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VTJ-Sx-2F7">
-                                        <rect key="frame" x="633" y="0.0" width="208" height="17"/>
+                                        <rect key="frame" x="759" y="0.0" width="250" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total profits" id="WWo-qu-zfM">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2188,13 +2188,13 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <scrollView horizontalHuggingPriority="1" horizontalCompressionResistancePriority="250" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lG2-cw-G0k">
-                                <rect key="frame" x="20" y="20" width="839" height="226"/>
+                                <rect key="frame" x="20" y="20" width="1007" height="226"/>
                                 <clipView key="contentView" id="Jqc-Go-0Kc">
-                                    <rect key="frame" x="1" y="0.0" width="837" height="225"/>
+                                    <rect key="frame" x="1" y="0.0" width="1005" height="225"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ctZ-4l-gOF" viewBased="YES" id="qFU-fP-iHK">
-                                            <rect key="frame" x="0.0" y="0.0" width="843" height="202"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1005" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2466,7 +2466,7 @@ DQ
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="profitColumn" width="109" minWidth="10" maxWidth="3.4028234663852886e+38" id="u9E-QR-7vO">
+                                                <tableColumn identifier="profitColumn" width="271" minWidth="10" maxWidth="3.4028234663852886e+38" id="u9E-QR-7vO">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Profit">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2480,11 +2480,11 @@ DQ
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="o5q-bg-lv7">
-                                                            <rect key="frame" x="732" y="1" width="109" height="17"/>
+                                                            <rect key="frame" x="732" y="1" width="271" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JuV-7I-OyX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="109" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ll1-p2-Bpb">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -2512,7 +2512,7 @@ DQ
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GmZ-cL-AfG">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GmZ-cL-AfG">
                                     <rect key="frame" x="1" y="209" width="837" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -2521,7 +2521,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="ctZ-4l-gOF">
-                                    <rect key="frame" x="0.0" y="0.0" width="843" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1005" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -2624,7 +2624,7 @@ DQ
                 </viewController>
                 <customObject id="SIk-jb-ztt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562.5" y="1264"/>
+            <point key="canvasLocation" x="646.5" y="1264"/>
         </scene>
     </scenes>
     <resources>
