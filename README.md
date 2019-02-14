@@ -17,9 +17,9 @@ Transactions have to be added manually with the following parameters: Name of th
 
 The real-time price of the investment is then queried from the following APIs:
 
-* US stocks: [IEX] (https://iextrading.com/developer/)
-* Stocks, securities, etc traded in Frankfurt, Germany: [Deutsche Börse Group] (https://console.developer.deutsche-boerse.com)
-* Cryptocurrencies: [CryptoCompare] (https://min-api.cryptocompare.com)
+* US stocks: [IEX](https://iextrading.com/developer/)
+* Stocks, securities, etc traded in Frankfurt, Germany: [Deutsche Börse Group](https://console.developer.deutsche-boerse.com)
+* Cryptocurrencies: [CryptoCompare](https://min-api.cryptocompare.com)
 
 
 
