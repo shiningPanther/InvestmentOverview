@@ -15,11 +15,33 @@ This application is a place to keep a detailed overview over gains & losses for 
 ## Features
 Transactions have to be added manually with the following parameters: Name of the investment (has to be unique - e.g. Apple or Bitcoin), investment symbol (e.g. AAPL or BTC) or ISIN, category, number of units bought, price per unit, fees, exchange, date & time.
 
-The real-time price of the investment is then queried from the following APIs:
+The real-time price of the asset is then queried from the following APIs:
 
 * US stocks: [IEX](https://iextrading.com/developer/)
 * Stocks, securities, etc traded in Frankfurt, Germany: [Deutsche Börse Group](https://console.developer.deutsche-boerse.com)
 * Cryptocurrencies: [CryptoCompare](https://min-api.cryptocompare.com)
+
+Based on the transactions and the real-time price data, the following figures are calculated. *All calculations are done using the first-in, first-out accounting system.*
+
+* **Money currently invested:** The money spent on the assets that are currently still held (including fees).
+* **Value of current assets:** The value of the current assets, calculated using the real-time price data.
+* **Non-realized profits:** Virtual profits when selling the assets now. Difference between *Money currently invested* and *Value of current assets*.
+* **Realized profits:** Profits made by selling assets (including fees for buying and selling).
+* **Total profits:** Sum of *Non-realized profits* and *Realized profits*
+
+
+## Planned for the future
+* Filtering and listing all transactions in a specific date range, with a specific type (e.g. buy, sell, dividends, etc.), or on a specific exchange.
+* Listing all transactions relevant for the tax declaration of a given calendar year - Will be implement latest when needed this year.
+
+
+## Credits
+* 
+
+
+
+
+
 
 
 
