@@ -36,7 +36,10 @@ Based on the transactions and the real-time price data, the following figures ar
 
 
 ## Credits
-* 
+* To everybody who contributed to [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), which is so useful for dealing with JSON data.
+* To everybody who provides free real-time data price data of assets (see above).
+* App icon made by [Smashicon](https://www.flaticon.com/authors/smashicons) from [Flaticon](www.flaticon.com)
+
 
 
 
