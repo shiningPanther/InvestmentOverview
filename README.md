@@ -25,7 +25,7 @@ Based on the transactions and the real-time price data, the following figures ar
 
 * **Money currently invested:** The money spent on purchasing the assets that are currently still held (including fees).
 * **Value of current assets:** The value of the current assets, calculated using the real-time price data.
-* **Non-realized profits:** Virtual profits when selling the assets now. Difference between *Money currently invested* and *Value of current assets*.
+* **Non-realized profits:** Virtual profits assuming selling the assets now. Difference between *Money currently invested* and *Value of current assets*.
 * **Realized profits:** Profits made by selling assets (including fees for buying and selling).
 * **Total profits:** Sum of *Non-realized profits* and *Realized profits*
 
