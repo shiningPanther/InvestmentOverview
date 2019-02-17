@@ -20,6 +20,7 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "dateCell"), owner: self) as? NSTableCellView
+        cell?.textField?.font = NSFont .systemFont(ofSize: 12)
         
         if tableColumn?.identifier.rawValue == "dateColumn" {
             let date = selectedTransactions?[row].date ?? Date()

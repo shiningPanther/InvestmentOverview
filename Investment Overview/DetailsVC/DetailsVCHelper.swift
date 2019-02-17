@@ -34,8 +34,9 @@ extension DetailsVC {
     }
     
     func updateTotal() {
-        let (investedMoney, realizedProfits, unrealizedProfits) = SortAndCalculate.calculateTotalProfits()
-        totalInvestedMoneyAmount.stringValue = String(format: "%.2f €", investedMoney)
+        let (investedMoney, currentValueOfAssets, realizedProfits, unrealizedProfits) = SortAndCalculate.calculateTotalProfits()
+        totalInvestedMoney.stringValue = String(format: "%.2f €", investedMoney)
+        totalCurrentValueOfAssets.stringValue = String(format: "%.2f €", currentValueOfAssets)
         totalRealizedProfitsAmount.stringValue = String(format: "%.2f €", realizedProfits)
         if realizedProfits < 0 {totalRealizedProfitsAmount.textColor = NSColor.red}
         else {totalRealizedProfitsAmount.textColor = NSColor.black}
@@ -50,6 +51,7 @@ extension DetailsVC {
     func updateCategory(category: Category) {
         categoryLabel.stringValue = "Category: \(category.name ?? "No category selected - This should never happen...")"
         categoryInvestedMoneyAmount.stringValue = String(format: "%.2f €", category.investedMoney)
+        categoryCurrentValueOfAssetsAmount.stringValue = String(format: "%.2f €", category.currentValueOfAssets)
         categoryRealizedProfitsAmount.stringValue = String(format: "%.2f €", category.realizedProfits)
         if category.realizedProfits < 0 {categoryRealizedProfitsAmount.textColor = NSColor.red}
         else {categoryRealizedProfitsAmount.textColor = NSColor.black}
@@ -66,8 +68,18 @@ extension DetailsVC {
     func updateInvestment(investment: Investment) {
         
         investmentLabel.stringValue = String(format: "%@:", investment.name ?? "")
-        balanceLabel.stringValue = String(format: "%.4f %@", investment.balance, investment.symbol ?? "")
-        currentPriceLabel.stringValue = String(format: "Current price: %.4f €", investment.currentPrice)
+        if investment.apiWebsite == "CryptoCompare" {
+            balanceLabel.stringValue = String(format: "%.4f %@", investment.balance, investment.symbol ?? "")
+        }
+        else {
+            balanceLabel.stringValue = String(format: "%.0f %@", investment.balance, investment.symbol ?? "")
+        }
+        if investment.apiWebsite == "CryptoCompare" {
+            currentPriceLabel.stringValue = String(format: "Current price: %.4f €", investment.currentPrice)
+        }
+        else {
+            currentPriceLabel.stringValue = String(format: "Current price: %.2f €", investment.currentPrice)
+        }
         if investment.currentPrice == 0.0 { currentPriceLabel.stringValue = "Current Price: N/A"}
         
         // This is for the date label
@@ -80,6 +92,7 @@ extension DetailsVC {
         lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
         
         investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.investedMoney)
+        investmentCurrentValueOfAssetsAmount.stringValue = String(format: "%.2f €", investment.currentValueOfAssets)
         investmentRealizedProfitsAmount.stringValue = String(format: "%.2f €", investment.realizedProfits)
         if investment.realizedProfits < 0 {investmentRealizedProfitsAmount.textColor = NSColor.red}
         else {investmentRealizedProfitsAmount.textColor = NSColor.black}
@@ -102,9 +115,11 @@ extension DetailsVC {
         currentPriceLabel.isHidden = true
         lastUpdateLabel.isHidden = true
         investmentInvestedMoneyLabel.isHidden = true
+        investmentCurrentValueOfAssetsLabel.isHidden = true
         investmentRealizedProfitsLabel.isHidden = true
         investmentUnrealizedProfitsLabel.isHidden = true
         investmentInvestedMoneyAmount.isHidden = true
+        investmentCurrentValueOfAssetsAmount.isHidden = true
         investmentTotalProfitsLabel.isHidden = true
         investmentRealizedProfitsAmount.isHidden = true
         investmentUnrealizedProfitsAmount.isHidden = true
@@ -118,10 +133,12 @@ extension DetailsVC {
         currentPriceLabel.isHidden = false
         lastUpdateLabel.isHidden = false
         investmentInvestedMoneyLabel.isHidden = false
+        investmentCurrentValueOfAssetsLabel.isHidden = false
         investmentRealizedProfitsLabel.isHidden = false
         investmentUnrealizedProfitsLabel.isHidden = false
         investmentTotalProfitsLabel.isHidden = false
         investmentInvestedMoneyAmount.isHidden = false
+        investmentCurrentValueOfAssetsAmount.isHidden = false
         investmentRealizedProfitsAmount.isHidden = false
         investmentUnrealizedProfitsAmount.isHidden = false
         investmentTotalProfitsAmount.isHidden = false
@@ -131,10 +148,12 @@ extension DetailsVC {
     func hideCategory() {
         categoryLabel.isHidden = true
         categoryInvestedMoneyLabel.isHidden = true
+        categoryCurrentValueOfAssetsLabel.isHidden = true
         categoryRealizedProfitsLabel.isHidden = true
         categoryUnrealizedProfitsLabel.isHidden = true
         categoryTotalProfitsLabel.isHidden = true
         categoryInvestedMoneyAmount.isHidden = true
+        categoryCurrentValueOfAssetsAmount.isHidden = true
         categoryRealizedProfitsAmount.isHidden = true
         categoryUnrealizedProfitsAmount.isHidden = true
         categoryTotalProfitsAmount.isHidden = true
@@ -143,10 +162,12 @@ extension DetailsVC {
     func unhideCategory() {
         categoryLabel.isHidden = false
         categoryInvestedMoneyLabel.isHidden = false
+        categoryCurrentValueOfAssetsLabel.isHidden = false
         categoryRealizedProfitsLabel.isHidden = false
         categoryUnrealizedProfitsLabel.isHidden = false
         categoryTotalProfitsLabel.isHidden = false
         categoryInvestedMoneyAmount.isHidden = false
+        categoryCurrentValueOfAssetsAmount.isHidden = false
         categoryRealizedProfitsAmount.isHidden = false
         categoryUnrealizedProfitsAmount.isHidden = false
         categoryTotalProfitsAmount.isHidden = false

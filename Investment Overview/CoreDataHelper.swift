@@ -40,15 +40,15 @@ class CoreDataHelper {
         do {
             CoreDataHelper.transactions = try context.fetch(Transaction.fetchRequest()) as [Transaction]
         } catch {}
-        sortTransactions() // This shouldn't be necessary since the arrays are always sorted but I'll do it anyways...
+        CoreDataHelper.sortTransactions() // This shouldn't be necessary since the arrays are always sorted but I'll do it anyways...
         SortAndCalculate.calculateAllProfits()
     }
     
     // This function just sorts the variables categories, investments and transactions by name, name and date respectively
     static func sortTransactions() {
-        categories.sort(by: {$0.name! < $1.name!})
-        investments.sort(by: {$0.name! < $1.name!})
-        transactions.sort(by: {$0.date! < $1.date!})
+        CoreDataHelper.categories.sort(by: {$0.name! < $1.name!})
+        CoreDataHelper.investments.sort(by: {$0.name! < $1.name!})
+        CoreDataHelper.transactions.sort(by: {$0.date! < $1.date!})
     }
     
     

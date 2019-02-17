@@ -12,6 +12,9 @@ import Cocoa
 extension AddTransactionVC {
     
     func updateView() {
+        // Populate the transactionType pop up button
+        transactionTypePopUpButton.addItems(withTitles: ViewHelper.transactionTypes)
+        transactionTypePopUpButton.selectItem(withTitle: "Buy")
         // Populate the investmentCategory pop up button
         investmentCategoryPopUpButton.addItems(withTitles: getCategoryNames())
         investmentCategoryPopUpButton.selectItem(at: -1)

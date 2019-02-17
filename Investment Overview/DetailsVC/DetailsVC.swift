@@ -19,16 +19,19 @@ class DetailsVC: NSViewController {
     
     @IBOutlet weak var tableView: NSTableView!
     
-    @IBOutlet weak var totalInvestedMoneyAmount: NSTextField!
+    @IBOutlet weak var totalInvestedMoney: NSTextField!
+    @IBOutlet weak var totalCurrentValueOfAssets: NSTextField!
     @IBOutlet weak var totalRealizedProfitsAmount: NSTextField!
     @IBOutlet weak var totalUnrealizedProfitsAmount: NSTextField!
     @IBOutlet weak var totalTotalProfitsAmount: NSTextField!
     @IBOutlet weak var categoryLabel: NSTextField!
     @IBOutlet weak var categoryInvestedMoneyLabel: NSTextField!
+    @IBOutlet weak var categoryCurrentValueOfAssetsLabel: NSTextField!
     @IBOutlet weak var categoryRealizedProfitsLabel: NSTextField!
     @IBOutlet weak var categoryUnrealizedProfitsLabel: NSTextField!
     @IBOutlet weak var categoryTotalProfitsLabel: NSTextField!
     @IBOutlet weak var categoryInvestedMoneyAmount: NSTextField!
+    @IBOutlet weak var categoryCurrentValueOfAssetsAmount: NSTextField!
     @IBOutlet weak var categoryRealizedProfitsAmount: NSTextField!
     @IBOutlet weak var categoryUnrealizedProfitsAmount: NSTextField!
     @IBOutlet weak var categoryTotalProfitsAmount: NSTextField!
@@ -37,10 +40,12 @@ class DetailsVC: NSViewController {
     @IBOutlet weak var currentPriceLabel: NSTextField!
     @IBOutlet weak var lastUpdateLabel: NSTextField!
     @IBOutlet weak var investmentInvestedMoneyLabel: NSTextField!
+    @IBOutlet weak var investmentCurrentValueOfAssetsLabel: NSTextField!
     @IBOutlet weak var investmentRealizedProfitsLabel: NSTextField!
     @IBOutlet weak var investmentUnrealizedProfitsLabel: NSTextField!
     @IBOutlet weak var investmentTotalProfitsLabel: NSTextField!
     @IBOutlet weak var investmentInvestedMoneyAmount: NSTextField!
+    @IBOutlet weak var investmentCurrentValueOfAssetsAmount: NSTextField!
     @IBOutlet weak var investmentRealizedProfitsAmount: NSTextField!
     @IBOutlet weak var investmentUnrealizedProfitsAmount: NSTextField!
     @IBOutlet weak var investmentTotalProfitsAmount: NSTextField!

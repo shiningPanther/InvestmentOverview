@@ -28,7 +28,7 @@ class OverviewVC: NSViewController {
         // Debugging -- Delete investments from the Core Data if needed
         //Debugging.deleteTransactionsOfInvestment(investmentName: "zzz")
         //Debugging.deleteInvestment(investmentName: "zzz")
-        Debugging.printTransactionsOfInvestment(investmentName: "Ethereum")
+        //Debugging.printTransactionsOfInvestment(investmentName: "Ethereum")
         
         // The following line ensures that the last column is not cut when resizing the outline view
         outlineView.columnAutoresizingStyle = NSOutlineView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
@@ -57,9 +57,9 @@ class OverviewVC: NSViewController {
         guard let vc = getVC(wc: wc) as? AddTransactionVC else {return}
         passSelectionToAddTransactionVC(addTransactionVC: vc)
         vc.updateView()
-        wc.showWindow(nil)
+        //wc.showWindow(nil)
         // Use this function to present the view Controller differently (wc.showWindow is not necessary then)
-        //presentAsSheet(vc)
+        presentAsSheet(vc)
     }
     
     @IBAction func refreshButtonClicke(_ sender: Any) {

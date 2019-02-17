@@ -46,11 +46,18 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
     // This method is called third when creating an outlineView
     // Set the text for each row and column
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        
+        guard let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "outlineViewCell"), owner: self) as? NSTableCellView else {return nil}
+        
         var text = ""
         var totalProfits = 0.0
         if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "investmentColumn" {
             guard let item = item as? String else {return nil}
             text = item
+            if CoreDataHelper.categories.contains(where: {$0.name == item}) {
+                cell.textField?.font = NSFont .boldSystemFont(ofSize: 12)
+            }
+            else { cell.textField?.font = NSFont .systemFont(ofSize: 12)}
         }
         else if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "profitColumn" {
             guard let item = item as? String else {return nil}
@@ -59,17 +66,17 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
                 guard categories.count == 1 else {return nil}
                 totalProfits = categories[0].realizedProfits + categories[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
-                
+                cell.textField?.font = NSFont .boldSystemFont(ofSize: 12)
             }
             if CoreDataHelper.investments.contains(where: {$0.name == item}) {
                 let investments = CoreDataHelper.investments.filter({$0.name == item})
                 guard investments.count == 1 else {return nil}
                 totalProfits = investments[0].realizedProfits + investments[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
+                cell.textField?.font = NSFont .systemFont(ofSize: 12)
             }
         }
         
-        guard let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "outlineViewCell"), owner: self) as? NSTableCellView else {return nil}
         cell.textField!.stringValue = text
         if totalProfits > 0 {
             cell.textField?.textColor = NSColor.black
