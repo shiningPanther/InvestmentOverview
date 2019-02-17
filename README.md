@@ -12,8 +12,12 @@ I deployed this application for two main reasons:
 This application is a place to keep a detailed overview over gains & losses for different categories of investments.
 
 
+## Examples
+
+
+
 ## Features
-Transactions have to be added manually with the following parameters: Name of the investment (has to be unique - e.g. Apple or Bitcoin), investment symbol (e.g. AAPL or BTC) or ISIN, category, number of units bought, price per unit, fees, exchange, date & time.
+Transactions are added manually with the following parameters: Name of the investment (has to be unique - e.g. Apple or Bitcoin), investment symbol (e.g. AAPL or BTC) or ISIN, category, number of units bought, price per unit, fees, exchange, date & time.
 
 Based on these transactions and the real-time price data (see below), the following figures are calculated. *All calculations are done using the first-in, first-out accounting system.*
 
