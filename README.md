@@ -13,7 +13,7 @@ This application is a place to keep a detailed overview over gains & losses for 
 
 
 ## Examples
-
+[](Screenshot 2019-02-17 at 16.34.33.png)
 
 
 ## Features
