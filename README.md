@@ -13,8 +13,8 @@ This application is a place to keep a detailed overview over gains & losses for 
 
 
 ## Examples
-![Alternative text](/Example-2019-02-17.png)
-
+![Example](/Example-2019-02-17.png)
+![ExampleAddTransaction](/ExampleAdd-2019-02-17.png)
 
 ## Features
 Transactions are added manually with the following parameters: Name of the investment (has to be unique - e.g. Apple or Bitcoin), investment symbol (e.g. AAPL or BTC) or ISIN, category, number of units bought, price per unit, fees, exchange, date & time.
