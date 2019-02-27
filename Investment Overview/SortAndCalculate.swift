@@ -69,10 +69,11 @@ class SortAndCalculate {
     }
     
     static func calculateCurrentValueOfAssets (investment: Investment) {
-        var price = investment.currentPrice
-        if price == 0 {
+        let price = investment.currentPrice
+        // Here, if no price is available I take the price of the last transaction. But I prefer to set the price to 0 if no price is available...
+        /*if price == 0 {
             price = CoreDataHelper.getTransactionsOfInvestment(investment: investment).last?.price ?? 0.0
-        }
+        }*/
         investment.currentValueOfAssets = price * investment.balance }
     
     
@@ -153,11 +154,13 @@ class SortAndCalculate {
             if buyTransaction.remainingBalance != 0 {
                 // priceDifference is either the "real" price difference or if no current price is available we assume the price of the last transaction to be the current price
                 var priceDifference = 0.0
-                if investment.currentPrice != 0 {
+                /*if investment.currentPrice != 0 {
                     priceDifference = investment.currentPrice - buyTransaction.price }
                 else {
                     let price = CoreDataHelper.getTransactionsOfInvestment(investment: investment).last?.price ?? buyTransaction.price
-                    priceDifference = price - buyTransaction.price }
+                    priceDifference = price - buyTransaction.price } */
+                // Here, I calculate it differently: If no price is available we take the price to be 0...
+                priceDifference = investment.currentPrice - buyTransaction.price
                 let ratioSold = buyTransaction.remainingBalance/buyTransaction.unitsBought
                 let profit = priceDifference * buyTransaction.remainingBalance - buyTransaction.fees * ratioSold
                 buyTransaction.profit = profit

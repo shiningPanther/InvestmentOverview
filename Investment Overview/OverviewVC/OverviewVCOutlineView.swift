@@ -55,9 +55,9 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
             guard let item = item as? String else {return nil}
             text = item
             if CoreDataHelper.categories.contains(where: {$0.name == item}) {
-                cell.textField?.font = NSFont .boldSystemFont(ofSize: 12)
+                cell.textField?.font = NSFont .boldSystemFont(ofSize: 11)
             }
-            else { cell.textField?.font = NSFont .systemFont(ofSize: 12)}
+            else { cell.textField?.font = NSFont .systemFont(ofSize: 11)}
         }
         else if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "profitColumn" {
             guard let item = item as? String else {return nil}
@@ -66,17 +66,31 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
                 guard categories.count == 1 else {return nil}
                 totalProfits = categories[0].realizedProfits + categories[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
-                cell.textField?.font = NSFont .boldSystemFont(ofSize: 12)
+                cell.textField?.font = NSFont .boldSystemFont(ofSize: 11)
             }
             if CoreDataHelper.investments.contains(where: {$0.name == item}) {
                 let investments = CoreDataHelper.investments.filter({$0.name == item})
                 guard investments.count == 1 else {return nil}
                 totalProfits = investments[0].realizedProfits + investments[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
-                cell.textField?.font = NSFont .systemFont(ofSize: 12)
+                cell.textField?.font = NSFont .systemFont(ofSize: 11)
             }
         }
-        
+        else if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "warningColumn" {
+            guard let item = item as? String else {return nil}
+            // if it is a category don't display any warnings...
+            if CoreDataHelper.categories.contains(where: {$0.name == item}) {text = ""}
+            // if it is an investment a warning can be displayed...
+            else if CoreDataHelper.investments.contains(where: {$0.name == item}) {
+                let investments = CoreDataHelper.investments.filter({$0.name == item})
+                guard investments.count == 1 else {return nil}
+                if investments[0].balance == 0 || investments[0].currentPrice != 0.0 {text = ""}
+                else {
+                    text = "⚠️"
+                    cell.textField?.font = NSFont .systemFont(ofSize: 11)
+                }
+            }
+        }
         
         cell.textField!.stringValue = text
         if totalProfits > 0 {
