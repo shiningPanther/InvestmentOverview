@@ -44,10 +44,14 @@ class SortAndCalculate {
                 investment.balance += transaction.unitsBought
                 transaction.remainingBalance += transaction.unitsBought
             }
+            else if transaction.type == "Airdrop" {
+                investment.balance += transaction.unitsBought
+                transaction.remainingBalance += transaction.unitsBought
+            }
             else if transaction.type == "Sell" {
                 investment.balance -= transaction.unitsBought
                 transaction.remainingBalance += transaction.unitsBought // Here the remaining balance indidcates how many transactions are units are still to be sold
-                guard investment.balance >= 0 else {return} // If this is not fulfilled something has gone wrong...
+                // guard investment.balance >= 0 else {return} // If this is not fulfilled something has gone wrong...
                 // This function calculates the profits made through a sell and assigns the value to the attribute 'profit' of the transaction
                 SortAndCalculate.calculateSellProfit(sellTransaction: transaction)
                 investment.realizedProfits += transaction.profit

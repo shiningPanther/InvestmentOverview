@@ -14,7 +14,7 @@ extension AddTransactionVC {
     func updateView() {
         // Populate the transactionType pop up button
         transactionTypePopUpButton.addItems(withTitles: ViewHelper.transactionTypes)
-        transactionTypePopUpButton.selectItem(withTitle: "Buy")
+        transactionTypePopUpButton.selectItem(withTitle: "")
         // Populate the investmentCategory pop up button
         investmentCategoryPopUpButton.addItems(withTitles: getCategoryNames())
         investmentCategoryPopUpButton.selectItem(at: -1)
@@ -31,8 +31,25 @@ extension AddTransactionVC {
             investmentNamePopUpButton.selectItem(withTitle: selectedInvestment?.name ?? "")
             updateTextFieldsForInvestment(investment: selectedInvestment)
         }
+        // This is to make sure that initially we always start with the buy/sell view
+        makeBuySellView()
         // Set the date to the current date
         datePicker.dateValue = Date()
+    }
+    
+    func makeBuySellView() {
+        priceLabel.textColor = NSColor.black
+        priceTextField.isEnabled = true
+        feesLabel.textColor = NSColor.black
+        feesTextField.isEnabled = true
+        
+    }
+    
+    func makeAirdropView() {
+        priceLabel.textColor = NSColor.systemGray
+        priceTextField.isEnabled = false
+        feesLabel.textColor = NSColor.systemGray
+        feesTextField.isEnabled = false
     }
     
     func populateInvestmentPopUpButton() {

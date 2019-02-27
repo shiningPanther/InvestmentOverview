@@ -79,8 +79,9 @@ class CoreDataHelper {
         // return investment.transactions?.allObjects as? [Transaction]
     }
     
+    // Returns the buy and airdrop transactions
     static func getBuyTransactionsOfInvestment(investment: Investment) -> [Transaction] {
-        return transactions.filter({$0.investment == investment && $0.type == "Buy"})
+        return transactions.filter({$0.investment == investment && ($0.type == "Buy" || $0.type == "Airdrop")})
     }
     
     // just saves the context

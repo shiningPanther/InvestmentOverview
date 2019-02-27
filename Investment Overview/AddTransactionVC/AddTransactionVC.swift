@@ -29,8 +29,11 @@ class AddTransactionVC: NSViewController {
     @IBOutlet weak var symbolTextField: NSTextField!
     @IBOutlet weak var isinTextField: NSTextField!
     @IBOutlet weak var apiPopUpButton: NSPopUpButton!
+    @IBOutlet weak var unitsBoughtSoldLabel: NSTextField!
     @IBOutlet weak var unitsBoughtSoldTextField: NSTextField!
+    @IBOutlet weak var priceLabel: NSTextField!
     @IBOutlet weak var priceTextField: NSTextField!
+    @IBOutlet weak var feesLabel: NSTextField!
     @IBOutlet weak var feesTextField: NSTextField!
     @IBOutlet weak var datePicker: NSDatePicker!
     @IBOutlet weak var exchangeNameTextField: NSTextField!
@@ -40,6 +43,17 @@ class AddTransactionVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    @IBAction func transactionTypePopUpButtonChanged(_ sender: Any) {
+        if transactionTypePopUpButton.titleOfSelectedItem == "Buy" || transactionTypePopUpButton.titleOfSelectedItem == "Sell" {
+            makeBuySellView()
+        }
+        if transactionTypePopUpButton.titleOfSelectedItem == "Airdrop" {
+            // The first makeBuySellView ensures that we do not get something weird when changing from Dividends to Airdrop for example...
+            makeBuySellView()
+            makeAirdropView()
+        }
     }
     
     @IBAction func categoryTextFieldEdited(_ sender: NSTextField) {

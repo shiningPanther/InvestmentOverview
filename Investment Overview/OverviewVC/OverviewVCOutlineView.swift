@@ -77,6 +77,7 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
             }
         }
         
+        
         cell.textField!.stringValue = text
         if totalProfits > 0 {
             cell.textField?.textColor = NSColor.black
