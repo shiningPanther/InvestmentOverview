@@ -10,7 +10,7 @@ import Foundation
 
 class ViewHelper {
     
-    static let apiNames = ["CryptoCompare", "IEX"]
+    static let apiNames = ["CryptoCompare", "IEX", "Xetra"]
     
     static let transactionTypes = ["Buy", "Sell", "Dividends", "Airdrop"]
     

@@ -56,6 +56,10 @@ class SortAndCalculate {
                 SortAndCalculate.calculateSellProfit(sellTransaction: transaction)
                 investment.realizedProfits += transaction.profit
             }
+            else if transaction.type == "Dividends" {
+                transaction.profit = transaction.dividends
+                investment.realizedProfits += transaction.dividends
+            }
         }
         
         // We can now easily calculate the invested money, since the remaining balance of all transactions is known - The invested money is just the sum of all buy transactions that we still hold (plus fees)
@@ -225,6 +229,38 @@ class SortAndCalculate {
                 investment.lastUpdate = Date()
             }.resume()
             
+        case "Xetra":
+            let urlString = String(format: "https://api.developer.deutsche-boerse.com/prod/xetra-public-data-set/1.0.0/xetra?isin=%@", investment.isin ?? "")
+            guard let url = URL(string: urlString) else {return}
+            var request = URLRequest(url: url)
+            request.addValue("da423ad6-f804-4997-8b87-e2eeda63064e", forHTTPHeaderField: "X-DBP-APIKEY")
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard error == nil else {
+                    print("An error occured when accessing DB")
+                    print(error!)
+                    return
+                }
+                guard data != nil else {
+                    print("We have no data")
+                    return
+                }
+                let json = JSON(data!)
+                //guard json.description != "null" else {return}
+                var N = 100
+                while !json[String(N)].exists() {
+                    N -= 1
+                    if N == 0 {break}
+                }
+                let price = json[String(N)]["EndPrice"].double ?? 0.0
+                investment.currentPrice = price
+                let day = json[String(N)]["Date"].string ?? ""
+                let time = json[String(N)]["Time"].string ?? ""
+                let dateString = day + time
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
+                let date = dateFormatter.date(from: dateString)
+                investment.lastUpdate = date
+            }.resume()
             
         default:
             print("We are in the default case")

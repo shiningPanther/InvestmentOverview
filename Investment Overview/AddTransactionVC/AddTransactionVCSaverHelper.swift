@@ -68,11 +68,14 @@ extension AddTransactionVC {
         
         guard let context = CoreDataHelper.getContext() else {return}
         let newTransaction = Transaction(context: context)
-        newTransaction.unitsBought = unitsBoughtSoldTextField.doubleValue
+        newTransaction.type = transactionTypePopUpButton.titleOfSelectedItem
+        if newTransaction.type == "Dividends" {
+            newTransaction.dividends = unitsBoughtSoldTextField.doubleValue
+        }
+        else { newTransaction.unitsBought = unitsBoughtSoldTextField.doubleValue }
         newTransaction.price = priceTextField.doubleValue
         newTransaction.date = datePicker.dateValue
         newTransaction.exchange = exchangeNameTextField.stringValue
-        newTransaction.type = transactionTypePopUpButton.titleOfSelectedItem
         newTransaction.fees = feesTextField.doubleValue
         // link this transaction to its investment
         investmentOfTransaction.addToTransactions(newTransaction)

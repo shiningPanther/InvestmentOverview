@@ -82,7 +82,8 @@ class OverviewVC: NSViewController {
         guard let vc = getVC(wc: wc) as? EditTransactionVC else {return}
         passSelectionToEditTransactionVC(editTransactionVC: vc)
         vc.updateView()
-        wc.showWindow(nil)
+        //wc.showWindow(nil)
+        presentAsSheet(vc)
     }
 
     @IBAction func finishedEditing(_ sender: NSTextField) {

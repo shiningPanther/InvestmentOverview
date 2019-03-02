@@ -48,11 +48,18 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
         if tableColumn?.identifier.rawValue == "amountColumn" {
             let units = selectedTransactions?[row].unitsBought ?? 0.0
             cell?.textField?.stringValue = "\(units)"
+            if selectedTransactions?[row].type == "Dividends" {
+                cell?.textField?.stringValue = "-"
+            }
         }
         
         if tableColumn?.identifier.rawValue == "priceColumn" {
             let price = selectedTransactions?[row].price ?? 0.0
             cell?.textField?.stringValue = String(format: "%.2f €", price)
+            // Return nothing in this column if it is an airdrop
+            if selectedTransactions?[row].type == "Airdrop" || selectedTransactions?[row].type == "Dividends" {
+                cell?.textField?.stringValue = "-"
+            }
         }
         
         if tableColumn?.identifier.rawValue == "investedMoneyColumn" {
@@ -60,11 +67,19 @@ extension DetailsVC: NSTableViewDelegate, NSTableViewDataSource {
             let units = selectedTransactions?[row].unitsBought ?? 0.0
             // Display the rounded value to two digits as a string
             cell?.textField?.stringValue = String(format: "%.2f €", price*units)
+            // Return nothing in this column if it is an airdrop
+            if selectedTransactions?[row].type == "Airdrop" || selectedTransactions?[row].type == "Dividends" {
+                cell?.textField?.stringValue = "-"
+            }
         }
         
         if tableColumn?.identifier.rawValue == "feesColumn" {
             let fees = selectedTransactions?[row].fees ?? 0.0
             cell?.textField?.stringValue = String(format: "%.2f €", fees)
+            // Return nothing in this column if it is an airdrop
+            if selectedTransactions?[row].type == "Airdrop" || selectedTransactions?[row].type == "Dividends" {
+                cell?.textField?.stringValue = "-"
+            }
         }
         
         if tableColumn?.identifier.rawValue == "profitColumn" {

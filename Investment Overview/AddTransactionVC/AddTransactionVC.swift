@@ -54,6 +54,10 @@ class AddTransactionVC: NSViewController {
             makeBuySellView()
             makeAirdropView()
         }
+        if transactionTypePopUpButton.titleOfSelectedItem == "Dividends" {
+            makeBuySellView()
+            makeDividendsView()
+        }
     }
     
     @IBAction func categoryTextFieldEdited(_ sender: NSTextField) {

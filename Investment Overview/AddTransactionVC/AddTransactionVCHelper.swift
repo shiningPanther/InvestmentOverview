@@ -42,7 +42,8 @@ extension AddTransactionVC {
         priceTextField.isEnabled = true
         feesLabel.textColor = NSColor.black
         feesTextField.isEnabled = true
-        
+        unitsBoughtSoldTextField.placeholderString = "Number units"
+        unitsBoughtSoldLabel.stringValue = "Units transferred:"
     }
     
     func makeAirdropView() {
@@ -50,6 +51,15 @@ extension AddTransactionVC {
         priceTextField.isEnabled = false
         feesLabel.textColor = NSColor.systemGray
         feesTextField.isEnabled = false
+    }
+    
+    func makeDividendsView() {
+        priceLabel.textColor = NSColor.systemGray
+        priceTextField.isEnabled = false
+        feesLabel.textColor = NSColor.systemGray
+        feesTextField.isEnabled = false
+        unitsBoughtSoldTextField.placeholderString = "Dividends in EUR"
+        unitsBoughtSoldLabel.stringValue = "Dividends:"
     }
     
     func populateInvestmentPopUpButton() {
