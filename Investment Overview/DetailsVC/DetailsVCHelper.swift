@@ -83,7 +83,7 @@ extension DetailsVC {
         if investment.currentPrice == 0.0 { currentPriceLabel.stringValue = "Current Price: N/A"}
         
         // This is for the date label
-        let date = investment.lastUpdate ?? Date()
+        let date = investment.lastUpdate ?? Date(timeIntervalSince1970: 0)
         let formatter = DateFormatter()
         // This is to get a nice format for the date
         formatter.dateStyle = .short

@@ -54,12 +54,12 @@ extension AddTransactionVC {
     }
     
     func makeDividendsView() {
-        priceLabel.textColor = NSColor.systemGray
-        priceTextField.isEnabled = false
+        priceLabel.stringValue = "Dividend / stock:"
+        priceTextField.placeholderString = "Dividends in EUR"
         feesLabel.textColor = NSColor.systemGray
         feesTextField.isEnabled = false
-        unitsBoughtSoldTextField.placeholderString = "Dividends in EUR"
-        unitsBoughtSoldLabel.stringValue = "Dividends:"
+        unitsBoughtSoldTextField.placeholderString = "Stocks held"
+        unitsBoughtSoldLabel.stringValue = "Stocks held:"
     }
     
     func populateInvestmentPopUpButton() {

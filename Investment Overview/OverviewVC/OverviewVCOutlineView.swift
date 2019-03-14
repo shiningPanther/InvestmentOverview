@@ -48,36 +48,61 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
         guard let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "outlineViewCell"), owner: self) as? NSTableCellView else {return nil}
+        cell.textField?.textColor = NSColor.black
+        cell.textField?.font = NSFont .systemFont(ofSize: 11)
         
+        guard let item = item as? String else {return nil}
         var text = ""
         var totalProfits = 0.0
+        
         if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "investmentColumn" {
-            guard let item = item as? String else {return nil}
             text = item
             if CoreDataHelper.categories.contains(where: {$0.name == item}) {
                 cell.textField?.font = NSFont .boldSystemFont(ofSize: 11)
+                let categories = CoreDataHelper.categories.filter({$0.name == item})
+                guard categories.count == 1 else {return nil}
+                if categories[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = NSColor .systemGray }
             }
-            else { cell.textField?.font = NSFont .systemFont(ofSize: 11)}
+            else {
+                let investments = CoreDataHelper.investments.filter({$0.name == item})
+                guard investments.count == 1 else {return nil}
+                if investments[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1) }
+            }
         }
+            
         else if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "profitColumn" {
-            guard let item = item as? String else {return nil}
             if CoreDataHelper.categories.contains(where: {$0.name == item}) {
                 let categories = CoreDataHelper.categories.filter({$0.name == item})
                 guard categories.count == 1 else {return nil}
                 totalProfits = categories[0].realizedProfits + categories[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
                 cell.textField?.font = NSFont .boldSystemFont(ofSize: 11)
+                if totalProfits > 0 {
+                    cell.textField?.textColor = NSColor.black
+                    if categories[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = NSColor .systemGray }
+                }
+                if totalProfits < 0 {
+                    cell.textField?.textColor = NSColor.red
+                    if categories[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1) }
+                }
             }
             if CoreDataHelper.investments.contains(where: {$0.name == item}) {
                 let investments = CoreDataHelper.investments.filter({$0.name == item})
                 guard investments.count == 1 else {return nil}
                 totalProfits = investments[0].realizedProfits + investments[0].unrealizedProfits
                 text = String(format: "%.2f €", totalProfits)
-                cell.textField?.font = NSFont .systemFont(ofSize: 11)
+                if totalProfits > 0 {
+                    cell.textField?.textColor = NSColor.black
+                    if investments[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = NSColor .systemGray }
+                }
+                if totalProfits < 0 {
+                    cell.textField?.textColor = NSColor.red
+                    if investments[0].currentValueOfAssets < 0.01 { cell.textField?.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1) }
+                }
             }
         }
+            
         else if let columnIdentifier = tableColumn?.identifier.rawValue, columnIdentifier == "warningColumn" {
-            guard let item = item as? String else {return nil}
             // if it is a category don't display any warnings...
             if CoreDataHelper.categories.contains(where: {$0.name == item}) {text = ""}
             // if it is an investment a warning can be displayed...
@@ -87,18 +112,11 @@ extension OverviewVC: NSOutlineViewDataSource, NSOutlineViewDelegate {
                 if investments[0].balance == 0 || investments[0].currentPrice != 0.0 {text = ""}
                 else {
                     text = "⚠️"
-                    cell.textField?.font = NSFont .systemFont(ofSize: 11)
                 }
             }
         }
         
         cell.textField!.stringValue = text
-        if totalProfits > 0 {
-            cell.textField?.textColor = NSColor.black
-        }
-        if totalProfits < 0 {
-            cell.textField?.textColor = NSColor.red
-        }
         return cell
     }
     

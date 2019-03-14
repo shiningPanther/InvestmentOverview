@@ -57,8 +57,8 @@ class SortAndCalculate {
                 investment.realizedProfits += transaction.profit
             }
             else if transaction.type == "Dividends" {
-                transaction.profit = transaction.dividends
-                investment.realizedProfits += transaction.dividends
+                transaction.profit = transaction.unitsBought * transaction.price
+                investment.realizedProfits += transaction.profit
             }
         }
         
@@ -247,19 +247,19 @@ class SortAndCalculate {
                 let json = JSON(data!)
                 //guard json.description != "null" else {return}
                 var N = 100
-                while !json[String(N)].exists() {
+                while !json[N].exists() {
                     N -= 1
-                    if N == 0 {break}
+                    if N < 0 {break}
                 }
-                let price = json[String(N)]["EndPrice"].double ?? 0.0
-                investment.currentPrice = price
-                let day = json[String(N)]["Date"].string ?? ""
-                let time = json[String(N)]["Time"].string ?? ""
+                let price = json[N]["EndPrice"].double ?? 0.0
+                if N >= 0 {investment.currentPrice = price}
+                let day = json[N]["Date"].string ?? ""
+                let time = json[N]["Time"].string ?? ""
                 let dateString = day + time
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
+                dateFormatter.dateFormat = "yyyy-MM-ddHH:mm"
                 let date = dateFormatter.date(from: dateString)
-                investment.lastUpdate = date
+                if date != nil {investment.lastUpdate = date}
             }.resume()
             
         default:

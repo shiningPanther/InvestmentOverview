@@ -30,7 +30,7 @@ extension EditTransactionVC {
     func updateInvestmentFields() {
         investmentNameTextField.stringValue = selectedInvestment?.name ?? ""
         symbolTextField.stringValue = selectedInvestment?.symbol ?? ""
-        //isinTextField.stringValue = selectedInvestment?.isin ?? ""
+        isinTextField.stringValue = selectedInvestment?.isin ?? ""
         apiPopUpButton.addItems(withTitles: ViewHelper.apiNames)
         apiPopUpButton.selectItem(withTitle: selectedInvestment?.apiWebsite ?? "")
     }
