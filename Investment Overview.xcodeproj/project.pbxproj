@@ -196,7 +196,7 @@
 				TargetAttributes = {
 					C45C9BCD20E015B000B628AE = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -405,7 +405,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "shiningPanther.Investment-Overview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -423,7 +423,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "shiningPanther.Investment-Overview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

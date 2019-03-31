@@ -63,7 +63,7 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(transaction!)
         // Now also delete it from the category array
-        guard let indexToDelete = CoreDataHelper.transactions.index(of: transaction!) else {return}
+        guard let indexToDelete = CoreDataHelper.transactions.firstIndex(of: transaction!) else {return}
         CoreDataHelper.transactions.remove(at: indexToDelete)
     }
     
@@ -73,7 +73,7 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(investment)
         // Now also delete it from the investment array
-        guard let indexToDelete = CoreDataHelper.investments.index(of: investment) else {return}
+        guard let indexToDelete = CoreDataHelper.investments.firstIndex(of: investment) else {return}
         CoreDataHelper.investments.remove(at: indexToDelete)
     }
     
@@ -84,7 +84,7 @@ extension DeleteTransactionVC {
         guard let context = CoreDataHelper.getContext() else {return}
         context.delete(category)
         // Now also delete it from the category array
-        guard let indexToDelete = CoreDataHelper.categories.index(of: category) else {return}
+        guard let indexToDelete = CoreDataHelper.categories.firstIndex(of: category) else {return}
         CoreDataHelper.categories.remove(at: indexToDelete)
     }
     
