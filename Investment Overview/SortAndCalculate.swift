@@ -173,11 +173,22 @@ class SortAndCalculate {
     
     static func getCurrentPrice(investment: Investment, symbol: String, apiName: String) {
         
+        // USD-EUR conversion rate - update from time to time
+        // Current rate from 2020/04/11
+        let usdRate = 0.91
+        
         guard ViewHelper.apiNames.contains(apiName) else {return}
+        if investment.lastUpdate == nil {investment.lastUpdate = Date(timeIntervalSinceReferenceDate: 0)}
+        
+        // We implement this check to make sure that the API is only called once per day per currency
+        // Rapidapi only allows 5 calls per minute
+        let calendar = Calendar.current
+        if calendar.isDateInToday(investment.lastUpdate!) {return}
         
         switch apiName {
             
         case "CryptoCompare":
+            print(String(format: "API call to CryptoCompare - %@", investment.name ?? ""))
             let urlString = String(format: "https://min-api.cryptocompare.com/data/price?fsym=%@&tsyms=EUR", symbol)
             // print(urlString)
             guard let url = URL(string: urlString) else {return}
@@ -190,50 +201,24 @@ class SortAndCalculate {
                 guard data != nil else {return}
                 // Make a json object out of the returned data
                 let json = JSON(data!)
-                let price = json["EUR"].double ?? 0.0
-                // print(json["EUR"].double ?? "Not defined")
+                let price = json["EUR"].doubleValue
+                guard price > 0 else {return}
                 investment.currentPrice = price
                 investment.lastUpdate = Date()
             }.resume()
             
-        case "IEX":
-            let urlString = String(format: "https://api.iextrading.com/1.0/stock/%@/price", symbol)
-            // print(urlString)
-            guard let url = URL(string: urlString) else {return}
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard error == nil else{
-                    print("An error occured")
-                    print(error!)
-                    return
-                }
-                guard data != nil else {return}
-                let priceUsdString = String(data: data!, encoding: .utf8)
-                let priceUsd = Double(priceUsdString!) ?? 0.0
-                investment.currentPriceUSD = priceUsd
-            }.resume()
+        case "Rapidapi":
+            print(String(format: "API call to Rapidapi - %@", investment.name ?? ""))
+            let urlString = String(format: "https://alpha-vantage.p.rapidapi.com/query")
+            guard var components = URLComponents(string: urlString) else {return}
+            components.queryItems = [
+                URLQueryItem(name: "symbol", value: investment.symbol ?? ""),
+                URLQueryItem(name: "function", value: "GLOBAL_QUOTE")
+            ]
+            var request = URLRequest(url: components.url!)
+            request.addValue("75668d9d74msh8eabfb4bd3bebc1p182e9fjsn392037530a32", forHTTPHeaderField: "x-rapidapi-key")
+//            print(request.description)
             
-            // Get the conversion rate to EUR
-            let urlStringConversion = String(format: "https://api.exchangeratesapi.io/latest")
-            guard let urlConversion = URL(string: urlStringConversion) else {return}
-            URLSession.shared.dataTask(with: urlConversion) { (data, response, error) in
-                guard error == nil else {
-                    print("An error occured in the conversion rates")
-                    print(error!)
-                    return
-                }
-                guard data != nil else {return}
-                // Make a json object out of the returned data
-                let json = JSON(data!)
-                let conversionRate = json["rates"]["USD"].double ?? 0.0
-                investment.currentPrice = investment.currentPriceUSD / conversionRate
-                investment.lastUpdate = Date()
-            }.resume()
-            
-        case "Xetra":
-            let urlString = String(format: "https://api.developer.deutsche-boerse.com/prod/xetra-public-data-set/1.0.0/xetra?isin=%@", investment.isin ?? "")
-            guard let url = URL(string: urlString) else {return}
-            var request = URLRequest(url: url)
-            request.addValue("da423ad6-f804-4997-8b87-e2eeda63064e", forHTTPHeaderField: "X-DBP-APIKEY")
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard error == nil else {
                     print("An error occured when accessing DB")
@@ -245,25 +230,23 @@ class SortAndCalculate {
                     return
                 }
                 let json = JSON(data!)
-                //guard json.description != "null" else {return}
-                var N = 100
-                while !json[N].exists() {
-                    N -= 1
-                    if N < 0 {break}
-                }
-                let price = json[N]["EndPrice"].double ?? 0.0
-                if N >= 0 {investment.currentPrice = price}
-                let day = json[N]["Date"].string ?? ""
-                let time = json[N]["Time"].string ?? ""
-                let dateString = day + time
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-ddHH:mm"
-                let date = dateFormatter.date(from: dateString)
-                if date != nil {investment.lastUpdate = date}
+//                print(json["Global Quote"])
+                let price = json["Global Quote"]["05. price"].doubleValue
+                guard price > 0 else {return}
+                if String(investment.symbol!.suffix(2)) == "DE" {investment.currentPrice = price}
+                else {investment.currentPrice = price * usdRate}
+                // These are some special cases, where the API returns the Dollar price but shouldn't
+                if investment.symbol! == "DBXW.DE" {investment.currentPrice = price * usdRate}
+//                let dateString = json["Global Quote"]["07. latest trading day"].stringValue
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+//                let date = dateFormatter.date(from: dateString)
+//                if date != nil {investment.lastUpdate = date}
+                investment.lastUpdate = Date()
             }.resume()
             
         default:
-            print("We are in the default case")
+            print(String(format: "We are in the default case - %@", investment.name ?? ""))
             return
         }
     }

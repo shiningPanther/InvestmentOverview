@@ -85,7 +85,17 @@ class OverviewVC: NSViewController {
         //wc.showWindow(nil)
         presentAsSheet(vc)
     }
-
+    
+    @IBAction func calcProfitButtonClicked(_ sender: Any) {
+        guard let wc = getWC(identifier: "calcProfitWC") else {return}
+        guard let vc = getVC(wc: wc) as? CalcProfitVC else {
+            print("We do not have a WC")
+            return
+        }
+        print("We have a WC")
+        presentAsSheet(vc)
+    }
+    
     @IBAction func finishedEditing(_ sender: NSTextField) {
         // oldName is the name in the text field displayed before editing
         guard let oldName = outlineView.item(atRow: outlineView.selectedRow) as? String else {return}

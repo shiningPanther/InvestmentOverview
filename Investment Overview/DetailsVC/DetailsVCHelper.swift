@@ -87,7 +87,7 @@ extension DetailsVC {
         let formatter = DateFormatter()
         // This is to get a nice format for the date
         formatter.dateStyle = .short
-        formatter.timeStyle = .medium
+//        formatter.timeStyle = .medium
         let dateString = formatter.string(from: date)
         lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
         
