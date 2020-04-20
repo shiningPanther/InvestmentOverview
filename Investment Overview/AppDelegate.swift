@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         print("Remember to update the USD-EUR conversion rate from time to time")
-        print("It can be found at the beginning in the getCurrenPrice function of the SortAndCalculate class")
+        print("It can be found at the beginning in the getCurrentPrice function of the SortAndCalculate class")
         print(NSHomeDirectory())
     }
 

@@ -11,7 +11,7 @@ import Cocoa
 
 class CoreDataHelper {
     
-    // These variables contain all the transactions
+    // These variables contain all the transactions - it is populated through the loadTransactions method, which is called from the SplitController class
     static var categories: [Category] = []
     static var investments: [Investment] = []
     static var transactions: [Transaction] = []

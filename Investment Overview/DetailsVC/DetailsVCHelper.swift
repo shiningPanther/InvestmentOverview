@@ -83,13 +83,16 @@ extension DetailsVC {
         if investment.currentPrice == 0.0 { currentPriceLabel.stringValue = "Current Price: N/A"}
         
         // This is for the date label
-        let date = investment.lastUpdate ?? Date(timeIntervalSince1970: 0)
-        let formatter = DateFormatter()
-        // This is to get a nice format for the date
-        formatter.dateStyle = .short
-//        formatter.timeStyle = .medium
-        let dateString = formatter.string(from: date)
-        lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
+        let date = investment.lastSuccessfulUpdate
+        if date == nil || date  == Date(timeIntervalSince1970: 0) { lastUpdateLabel.stringValue = "Not updated recently" }
+        else {
+            let formatter = DateFormatter()
+            // This is to get a nice format for the date
+            formatter.dateStyle = .short
+            formatter.timeStyle = .medium
+            let dateString = formatter.string(from: date!)
+            lastUpdateLabel.stringValue = String(format: "Last update: %@", dateString)
+        }
         
         investmentInvestedMoneyAmount.stringValue = String(format: "%.2f €", investment.investedMoney)
         investmentCurrentValueOfAssetsAmount.stringValue = String(format: "%.2f €", investment.currentValueOfAssets)

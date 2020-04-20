@@ -170,28 +170,36 @@ class SortAndCalculate {
                 buyTransaction.profit = profit
                 investment.unrealizedProfits += profit }}}
     
+    static func resetLastSuccessfulUpdate() {
+        for investment in CoreDataHelper.investments {
+            investment.lastSuccessfulUpdate = Date(timeIntervalSince1970: 0)
+        }
+    }
     
     static func getCurrentPrice(investment: Investment, symbol: String, apiName: String) {
         
         // USD-EUR conversion rate - update from time to time
-        // Current rate from 2020/04/11
-        let usdRate = 0.91
+        // Current rate from 2020/04/20
+        let usdRate = 0.92
         
         guard ViewHelper.apiNames.contains(apiName) else {return}
-        if investment.lastUpdate == nil {investment.lastUpdate = Date(timeIntervalSinceReferenceDate: 0)}
-        
-        // We implement this check to make sure that the API is only called once per day per currency
-        // Rapidapi only allows 5 calls per minute
-        let calendar = Calendar.current
-        if calendar.isDateInToday(investment.lastUpdate!) {return}
+        if investment.lastUpdate == nil {investment.lastUpdate = Date(timeIntervalSince1970: 0)}
+        if investment.lastSuccessfulUpdate == nil {investment.lastSuccessfulUpdate = Date(timeIntervalSince1970: 0)}
         
         switch apiName {
             
         case "CryptoCompare":
+            // If an API call has been made less than 10 minutes ago, we do not make another call
+            let secondsSinceLastCall = Date().timeIntervalSince(investment.lastUpdate!)
+            if secondsSinceLastCall < 600
+            {return}
+            
             print(String(format: "API call to CryptoCompare - %@", investment.name ?? ""))
             let urlString = String(format: "https://min-api.cryptocompare.com/data/price?fsym=%@&tsyms=EUR", symbol)
             // print(urlString)
             guard let url = URL(string: urlString) else {return}
+            
+            investment.lastUpdate = Date()
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard error == nil else{
                     print("An error occured")
@@ -204,10 +212,21 @@ class SortAndCalculate {
                 let price = json["EUR"].doubleValue
                 guard price > 0 else {return}
                 investment.currentPrice = price
-                investment.lastUpdate = Date()
+                investment.lastSuccessfulUpdate = Date()
             }.resume()
             
         case "Rapidapi":
+            // We implement these checks to make sure the APIs are not called too often
+            // Rapidapi only allows 5 calls per minute
+            
+            // First, if a price has been updated today, we don't update it again
+            let calendar = Calendar.current
+            if calendar.isDateInToday(investment.lastSuccessfulUpdate!) {return}
+            
+            // Second, if an API call has been made less than a few minutes ago, we do not make another call
+            let secondsSinceLastCall = Date().timeIntervalSince(investment.lastUpdate!)
+            if secondsSinceLastCall < 90 {return}
+            
             print(String(format: "API call to Rapidapi - %@", investment.name ?? ""))
             let urlString = String(format: "https://alpha-vantage.p.rapidapi.com/query")
             guard var components = URLComponents(string: urlString) else {return}
@@ -219,6 +238,7 @@ class SortAndCalculate {
             request.addValue("75668d9d74msh8eabfb4bd3bebc1p182e9fjsn392037530a32", forHTTPHeaderField: "x-rapidapi-key")
 //            print(request.description)
             
+            investment.lastUpdate = Date()
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard error == nil else {
                     print("An error occured when accessing DB")
@@ -242,7 +262,7 @@ class SortAndCalculate {
 //                dateFormatter.dateFormat = "yyyy-MM-dd"
 //                let date = dateFormatter.date(from: dateString)
 //                if date != nil {investment.lastUpdate = date}
-                investment.lastUpdate = Date()
+                investment.lastSuccessfulUpdate = Date()
             }.resume()
             
         default:

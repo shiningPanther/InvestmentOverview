@@ -63,6 +63,7 @@ class OverviewVC: NSViewController {
     }
     
     @IBAction func refreshButtonClicke(_ sender: Any) {
+        SortAndCalculate.resetLastSuccessfulUpdate()
         SortAndCalculate.calculateAllProfits()
         let selectedRow = outlineView.selectedRowIndexes
         outlineView.reloadData()
