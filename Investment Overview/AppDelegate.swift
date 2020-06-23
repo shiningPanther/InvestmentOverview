@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         print("Remember to update the USD-EUR conversion rate from time to time")
         print("It can be found at the beginning in the getCurrentPrice function of the SortAndCalculate class")
+        print("The Yahoo finance API that is being called by rapidapi can be found at https://rapidapi.com/apidojo/api/Yahoo%20Finance")
         print(NSHomeDirectory())
     }
 

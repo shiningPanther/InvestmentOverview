@@ -170,17 +170,18 @@ class SortAndCalculate {
                 buyTransaction.profit = profit
                 investment.unrealizedProfits += profit }}}
     
-    static func resetLastSuccessfulUpdate() {
+    static func resetLastUpdate() {
         for investment in CoreDataHelper.investments {
             investment.lastSuccessfulUpdate = Date(timeIntervalSince1970: 0)
+            investment.lastUpdate = Date(timeIntervalSince1970: 0)
         }
     }
     
     static func getCurrentPrice(investment: Investment, symbol: String, apiName: String) {
         
         // USD-EUR conversion rate - update from time to time
-        // Current rate from 2020/04/20
-        let usdRate = 0.92
+        // Current rate from 2020/06/07
+        let usdRate = 0.88
         
         guard ViewHelper.apiNames.contains(apiName) else {return}
         if investment.lastUpdate == nil {investment.lastUpdate = Date(timeIntervalSince1970: 0)}
@@ -228,11 +229,10 @@ class SortAndCalculate {
             if secondsSinceLastCall < 90 {return}
             
             print(String(format: "API call to Rapidapi - %@", investment.name ?? ""))
-            let urlString = String(format: "https://alpha-vantage.p.rapidapi.com/query")
+            let urlString = String(format: "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile")
             guard var components = URLComponents(string: urlString) else {return}
             components.queryItems = [
-                URLQueryItem(name: "symbol", value: investment.symbol ?? ""),
-                URLQueryItem(name: "function", value: "GLOBAL_QUOTE")
+                URLQueryItem(name: "symbol", value: investment.symbol ?? "")
             ]
             var request = URLRequest(url: components.url!)
             request.addValue("75668d9d74msh8eabfb4bd3bebc1p182e9fjsn392037530a32", forHTTPHeaderField: "x-rapidapi-key")
@@ -250,18 +250,11 @@ class SortAndCalculate {
                     return
                 }
                 let json = JSON(data!)
-//                print(json["Global Quote"])
-                let price = json["Global Quote"]["05. price"].doubleValue
+                var price = json["price"]["regularMarketPrice"]["raw"].doubleValue
                 guard price > 0 else {return}
-                if String(investment.symbol!.suffix(2)) == "DE" {investment.currentPrice = price}
-                else {investment.currentPrice = price * usdRate}
-                // These are some special cases, where the API returns the Dollar price but shouldn't
-                if investment.symbol! == "DBXW.DE" {investment.currentPrice = price * usdRate}
-//                let dateString = json["Global Quote"]["07. latest trading day"].stringValue
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd"
-//                let date = dateFormatter.date(from: dateString)
-//                if date != nil {investment.lastUpdate = date}
+                let currency = json["price"]["currency"].stringValue
+                if currency == "USD" {price = price * usdRate}
+                investment.currentPrice = price
                 investment.lastSuccessfulUpdate = Date()
             }.resume()
             
